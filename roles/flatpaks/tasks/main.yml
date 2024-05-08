@@ -49,7 +49,7 @@
 #      shell: flatpak repair
 
 - name: Instala flatpak de ardour
-  flatpak:
+  community.general.flatpak:
           name: https://dl.flathub.org/repo/appstream/org.ardour.Ardour.flatpakref
           state: present
 

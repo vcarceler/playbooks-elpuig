@@ -9,7 +9,7 @@
     - php-mysql
 
 - name: Activa el módulo userdir de Apache
-  apache2_module:
+  community.general.apache2_module:
     state: present
     name: userdir
 
