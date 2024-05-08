@@ -1,1 +1,1 @@
-# Playbooks utilizados con Ubuntu 20.04
+# Playbooks utilizados en [El Puig](https://elpuig.xeill.net/)
