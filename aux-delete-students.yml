@@ -1,0 +1,12 @@
+---
+- hosts: saladeprofessors
+  user: root
+
+  tasks:
+          - name: Borrado de alumnos
+            user:
+                    name: "{{ item }}"
+                    state: absent
+                    remove: true
+            loop:
+                    - tecnics

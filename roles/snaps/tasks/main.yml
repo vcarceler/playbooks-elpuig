@@ -1,0 +1,113 @@
+#
+# Instalación de snaps
+#
+
+# Fedora necesita instalar el paquete snapd
+#
+- name: Instala el paquete snapd en Fedora
+  dnf:
+    name: snapd
+    state: present
+  when: ansible_distribution_version == "34"
+
+- name: Fedora requiere un enlace para snapd
+  file:
+    src: /var/lib/snapd/snap
+    dest: /snap
+    state: link
+  when: ansible_distribution_version == "34"
+
+- name: Elimina snaps deprecated
+  snap:
+          state: absent
+          name:
+                  #- atom
+                  - blender
+                  - bluej
+                  - brackets
+                  - code
+                  - darktable
+                  - eclipse
+                  - flameshot
+                  - gimp
+                  - godot-3-1
+                  - inkscape
+                  - intellij-idea-educational
+                  - kalgebra
+                  - kbruch
+                  - kcalc
+                    #- kdenlive
+                  - kig
+                  - ktouch
+                  - krita
+                  - librepcb
+                  - musescore
+                  - mysql-workbench-community
+                  - netbeans
+                  - natron
+                  - node
+                  - octave
+                  - obs-studio
+                  - pdfmixtool
+                  - pdftk
+                  - qalculate
+                  - ruby
+                  - shotcut
+                  - syncthing
+                  - sweethome3d-homedesign
+                  - umbrello
+                  - vlc
+
+- name: Instala snap beekeeper-studio
+  snap:
+        name: beekeeper-studio
+
+#- name: Instala snap code
+#  snap:
+#        name: code
+#        classic: yes
+
+- name: Instala snap cura-slicer
+  snap:
+        name: cura-slicer
+
+#- name: Instala snap jupyter
+#  snap:
+#        name: jupyter
+
+#- name: Instala snap kalgebra
+#  snap:
+#        name: kalgebra
+
+#- name: Instala snap kmplot
+#  snap:
+#        name: kmplot
+
+- name: Instala snap kotlin
+  snap:
+        name: kotlin
+        classic: yes
+
+#- name: Desinstala snap node edge
+#  snap:
+#        name: node
+#        classic: yes
+#        channel: latest/edge
+#        state: absent
+
+#- name: Instala snap node
+#  snap:
+#        name: node
+#        classic: yes
+
+#- name: Instala snap node-red
+#  snap:
+#        name: node-red
+
+#- name: Instala snap pdftk
+#  snap:
+#        name: pdftk
+
+#- name: Instala snap umbrello
+#  snap:
+#        name: umbrello

@@ -1,0 +1,267 @@
+#!/bin/bash
+#
+# /etc/systemd/system/vasilisa.timer lanza Vasilisa en cada arranque y cada 24h.
+#
+# El script es responsable de algunas tareas de mantenimiento:
+#
+# - Publica algunas métricas para Prometheus.
+#
+# - Si el espacio disponible está por debajo del umbral borra los ficheros
+#   en el directorio descargas y en la papelera de cada usuario.
+#
+# - Si LXD está instalado detiene cada uno de los contenedores encendidos.
+#
+# - Si hay iconos de usuario personalizados en /var/lib/AccountsService/icons
+#   los borra.
+#
+# - Si hay actualizaciones flatpak las aplica.
+#
+# - Si existe /opt/sirin hace una petición a Sirin.
+#
+
+SCRIPT=`basename $0`
+
+function log () {
+        logger -t $SCRIPT $1
+	echo $1 | systemd-cat -t $SCRIPT -p info
+}
+
+log "There is something to do?"
+
+#
+# Mitiga el problema en el arranque de los Lenovo 300e 2nd Gen
+#
+#journalctl -b | grep "watchdog: BUG: soft lockup - CPU#" >/dev/null && init 6
+
+
+#
+# Libera espacio borrando los directorios de descargas y las papeleras.
+#
+THRESHOLD=52428800 # 50GiB
+DOWNLOAD_DIR='Baixades'
+
+DISK_FREE=`df | grep -E \/$ | sed "s/  */ /g" | cut -f4 -d' ' | cut -f1 -d'%'`
+log "Disk free: $DISK_FREE Threshold: $THRESHOLD"
+
+if [ $DISK_FREE -le $THRESHOLD ]
+then
+	log "Disk free under threshold. Deleting files in $DOWNLOAD_DIR & empty trash for every user."	
+
+	for user in `ls /home`
+	do
+		# Empty $DOWNLOAD_DIR
+		download_dir="/home/$user/$DOWNLOAD_DIR"
+		if [ -d $download_dir ]
+		then
+			size=`du -hs $download_dir 2>/dev/null`
+			log "removing $size"
+			rm -rf $download_dir/*
+			log "removed"
+		fi
+
+		# Delete Trash
+		trash_dir="/home/$user/.local/share/Trash"
+		if [ -d $trash_dir ]
+		then
+			size=`du -hs $trash_dir 2>/dev/null`
+			log "removing $size"
+			rm -rf $trash_dir
+			log "removed"
+		fi
+	done
+
+	log "No more users"
+	DISK_FREE=`df -h | grep -E \/$ | sed "s/  */ /g" | cut -f5 -d' ' | cut -f1 -d'%'`
+
+	# Clean apt cache
+	if [ -f /usr/bin/apt-get ]
+	then
+		log "apt-get clean"
+		apt-get clean
+	fi
+
+	log "Final disk usage: $DISK_FREE%"
+fi
+
+#
+# Checks for LXD RUNNING containers to stop
+#
+LXC="/snap/bin/lxc"
+if [ -f $LXC ]
+then
+	log "There are LXD running containers?"
+
+	for container in `$LXC list -c n,s --format csv | grep RUNNING | cut -f1 -d','`
+	do
+		# Stop container
+		log "Stop container $container"
+		$LXC stop $container && log "Stopped $container"
+	done
+
+fi
+
+#
+# Delete user icons
+#
+ICONSDIR="/var/lib/AccountsService/icons"
+for x in `ls $ICONSDIR`
+do
+	log "Deleting $ICONSDIR/$x"
+	rm $ICONSDIR/$x
+done
+
+#
+# Si el núcleo es 6.5.0-14-generic quito virtualbox
+#
+#kernel=`uname -a | cut -f3 -d ' '`
+#kernel_chunga=""
+#if [ "$kernel" = "6.5.0-14-generic" ]
+#then
+	#apt remove --yes virtualbox virtualbox-dkms virtualbox-qt
+	#if [ -f /opt/virtualbox-7.0_7.0.12-159484~Ubuntu~jammy_amd64.deb ]
+	#then
+	#	apt remove --yes virtualbox-7.0
+	#	rm /opt/virtualbox-7.0_7.0.12-159484~Ubuntu~jammy_amd64.deb
+	#fi
+	#apt search virtualbox-7.0 2>/dev/null | grep virtualbox-7.0 >/dev/null 
+	#if [ $? == 0 ] 
+	#then
+		#apt remove --yes virtualbox-7.0
+		#apt update
+		#apt install --yes virtualbox
+	#fi
+#fi
+
+#
+# Retiramos virtualbox-7.0 en Ubuntu 22.04
+#
+if [ -f /usr/bin/apt ]
+then
+	apt list | grep virtualbox-7.0
+	if [ $? == 0 ]
+	then
+		apt remove --yes virtualbox-7.0
+		apt update
+		apt install --yes virtualbox
+	fi
+fi
+
+#
+# Actualizaciones del sistema
+#
+if [ -f /usr/bin/unattended-upgrade ]
+then
+
+        # Mitiga este problema https://bugs.launchpad.net/ubuntu/+source/grub2/+bug/439784
+        grub-editenv /boot/grub/grubenv list
+        if [ $? -ne 0 ]
+        then
+                log "Mitigo el problema con grubenv https://bugs.launchpad.net/ubuntu/+source/grub2/+bug/439784"
+                rm /boot/grub/grubenv
+                grub-editenv /boot/grub/grubenv create
+                grub-editenv /boot/grub/grubenv set default=0
+                log "Mitigado"
+
+        fi
+
+
+	log "Lanzando unattended-upgrade"
+	dpkg --configure -a
+	apt -y --fix-broken install
+	apt update
+	unattended-upgrade
+	log "Actualizaciones de unattended-upgrade completadas"
+fi
+
+#
+# Fedora: dnf update
+#
+capacity=`cat /sys/class/power_supply/BAT1/capacity`
+if [ -f /usr/bin/dnf ] && [ $capacity -ge 50 ]
+then
+	log "Actualizando paquetes con dnf update -y"
+	dnf update -y
+	log "Actualizaciones de dnf update -y aplicadas"
+fi
+
+#
+# Actualizaciones flatpak
+#
+if [ -f /usr/bin/flatpak ]
+then
+	log "Si hay algún flatpak medioinstalado lo borra de /var/lib/flatpak/app"
+	apps=`ls /var/lib/flatpak/app`
+	flatpaks=`flatpak list --system --columns=application`
+
+	for x in $apps
+	do 
+		echo $flatpaks | grep $x >/dev/null 2>/dev/null || rm -rfv /var/lib/flatpak/app/$x 
+	done
+
+	log "Comprobando actualizaciones flatpak"
+	flatpak -y update || flatpak repair
+	log "Actualizaciones flatpak aplicadas"
+fi
+
+#
+# Snap refresh. (En algunos equipos hay paquetes rotos - chromium)
+#
+#if [ -f /usr/bin/snap ]
+#then
+#	log "Refresca los snap"
+#        snap refresh
+#        log "Paquetes snap refrescados"
+#
+#fi
+
+#
+# Sirin. https://github.com/vcarceler/sirin
+#
+SIRIN='/opt/sirin'
+if [ -f $SIRIN ]
+then
+	log "Haciendo una petición a Sirin"
+	wget -O /dev/null -i $SIRIN
+	log "Petición a Sirin completada"
+fi
+
+#
+# glpi-agent
+#
+if [ -f /snap/bin/glpi-agent ]
+then
+	log "Enviando inventario a GLPI"
+	/snap/bin/glpi-agent && log "Inventario eviado a GLPI"
+fi
+
+#
+# Métricas para Prometheus
+#
+# Ubuntu NODE_EXPORTER_DIR='/var/lib/prometheus/node-exporter'
+# Fedora NODE_EXPORTER_DIR='/var/lib/node_exporter/textfile_collector'
+NODE_EXPORTER_DIR_UBUNTU='/var/lib/prometheus/node-exporter'
+NODE_EXPORTER_DIR_FEDORA='/var/lib/node_exporter/textfile_collector'
+[ -d $NODE_EXPORTER_DIR_UBUNTU ] && NODE_EXPORTER_DIR=$NODE_EXPORTER_DIR_UBUNTU
+[ -d $NODE_EXPORTER_DIR_FEDORA ] && NODE_EXPORTER_DIR=$NODE_EXPORTER_DIR_FEDORA
+if [ -d $NODE_EXPORTER_DIR ]
+then
+        log "Preparo métricas para Prometheus"
+
+	sleep 120
+
+        FILE='misc.prom'
+        CPU_MODEL_NAME=`cat /proc/cpuinfo | grep "model name" | head -n 1 | cut -d':' -f2`
+        CPU_CORES=`cat /proc/cpuinfo | grep "cpu cores" | head -n 1 | cut -d':' -f2`
+        STARTUP_FINISHED=`systemd-analyze | head -n1 | cut -d'=' -f2`
+
+        echo "# HELP misc_labels Labeled information as provided by /proc/cpuinfo." >$NODE_EXPORTER_DIR/$FILE
+        echo "# TYPE misc_labels gauge" >>$NODE_EXPORTER_DIR/$FILE
+        echo "misc_labels{cpu=\"$CPU_MODEL_NAME\",cores=\"$CPU_CORES\",startup=\"$STARTUP_FINISHED\"} 1" >>$NODE_EXPORTER_DIR/$FILE
+
+        log "Métricas preparadas en $NODE_EXPORTER_DIR/$FILE"
+fi
+
+
+log "There is nothing more to do."
+
+

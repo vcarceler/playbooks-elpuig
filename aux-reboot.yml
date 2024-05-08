@@ -1,0 +1,6 @@
+---
+- hosts: ada
+  user: root
+
+  roles:
+    - reboot

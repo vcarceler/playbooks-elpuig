@@ -1,0 +1,6 @@
+---
+- hosts: 10.0.0.138
+  user: root
+
+  roles:
+    - report-idalu

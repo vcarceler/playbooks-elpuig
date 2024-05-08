@@ -1,0 +1,44 @@
+# Instala Vasilisa para ocuparse de los hosts durante el arranque y cada día.
+- name: Copia el script vasilisa en /opt/vasilisa
+  copy:
+    src: files/vasilisa
+    dest: /opt/vasilisa
+    owner: root
+    group: root
+    mode: u=rwx,g=r,o=r
+
+- name: Copia vasilisa.service en /etc/systemd/system
+  copy:
+    src: files/vasilisa.service
+    dest: /etc/systemd/system/vasilisa.service
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+
+- name: Copia vasilisa.timer en /etc/systemd/system
+  copy:
+    src: files/vasilisa.timer
+    dest: /etc/systemd/system/vasilisa.timer
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+
+- name: Activa vasilisa.timer
+  file:
+    src: /etc/systemd/system/vasilisa.timer
+    dest: /etc/systemd/system/timers.target.wants/vasilisa.timer
+    state: link
+
+- name: Borra el antiguo enlace /etc/systemd/system/default.target.wants/vasilisa.service
+  file:
+    path: /etc/systemd/system/default.target.wants/vasilisa.service
+    state: absent
+
+- name: Prepara la URL para Sirin
+  lineinfile:
+    path: /opt/sirin
+    regexp: "^.*$"
+    line: "{{ sirin }}"
+    create: yes
+  when:
+    sirin is defined

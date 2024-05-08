@@ -1,0 +1,46 @@
+#- name: Instala los paquetes necesarios para report-idalu en Fedora
+#  dnf:
+#    state: present
+#    update_cache: yes
+#    name:
+            #- virt-what
+            #- redhat-lsb-core
+
+- name: Copia /opt/report-idalu
+  copy:
+    src: files/report-idalu
+    dest: /opt/report-idalu
+    owner: root
+    group: root
+    mode: u=rwx,g=r,o=r
+
+- name: Copia /opt/report-idalu.csv
+  copy:
+    src: files/report-idalu.csv
+    dest: /opt/report-idalu.csv
+    owner: root
+    group: root
+    mode: u=rwx,g=r,o=r
+
+- name: Copia /usr/lib/systemd/system/report-idalu.timer
+  copy:
+    src: files/report-idalu.timer
+    dest: /usr/lib/systemd/system
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+
+- name: Copia /usr/lib/systemd/system/report-idalu.service
+  copy:
+    src: files/report-idalu.service
+    dest: /usr/lib/systemd/system
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+
+- name: Activa report-idalu.timer
+  systemd:
+    daemon_reload: true
+    enabled: yes
+    state: started
+    name: report-idalu.timer

@@ -1,0 +1,6 @@
+---
+- hosts: carret16
+  user: root
+
+  roles:
+    - shutdown

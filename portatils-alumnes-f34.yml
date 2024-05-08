@@ -1,0 +1,34 @@
+---
+- hosts: portatils-alumnes-f34
+  user: root
+  strategy: free
+
+  vars:
+    grupos: adm,cdrom,dialout,kvm,libvirt,lxd,vboxusers
+
+  roles:
+    - delete-users
+    - lock-sshd
+    - role: vasilisa
+      vars:
+        sirin: "http://10.0.0.2:8000/launcher/?label=portatils-alumnes-f34.yml"
+    - role: cambia-hostname-wg0
+      vars:
+        base_hostname: "alumne"
+    - software-2004
+    - lxd-fedora
+    - glpi-agent
+    - report-idalu
+    #- convidat
+    #- apagado-1455
+    #- apagado-2130
+    - flush-handlers
+
+  tasks:
+    # Cada equipo tiene un usuario particular
+    - include: "vpn/{{ ansible_host }}.yml"
+
+    # Usuarios
+    #- include: users/informatica/smx2a.yml
+    #- include: users/informatica/smx2b.yml
+    #- include: users/informatica/smx2c.yml

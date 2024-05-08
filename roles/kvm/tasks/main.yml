@@ -1,0 +1,15 @@
+- name: Instala kvm y virt-manager
+  apt:
+    update_cache: yes
+    pkg:
+    - libguestfs-tools
+    - ovmf
+    - qemu-kvm
+    - virt-manager
+
+- name: Activa la virtualización anidada para KVM
+  lineinfile:
+          path: /etc/modprobe.d/kvm.conf
+          create: yes
+          state: present
+          line: 'options kvm_intel nested=1'

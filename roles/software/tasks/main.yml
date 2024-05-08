@@ -1,0 +1,95 @@
+#
+# Instalación general de software para Ubuntu y Fedora 34
+#
+
+### HACK DE VIRTUALBOX
+
+# 10/1/2024 el núcleo 6.5.0.14.14~22.04.7 no funciona con el VirtualBox de los repos
+# https://bugs.launchpad.net/ubuntu/+source/linux-signed-hwe-6.5/+bug/2049022
+#- name: Quita virtualbox de los repos
+#  apt:
+#    state: absent
+#    autoremove: true
+#    name: virtualbox
+#  when: ansible_kernel == "6.5.0-14-generic"
+
+#- name: Instala Virtualbox libre de Oracle
+#  apt:
+#    deb: https://download.virtualbox.org/virtualbox/7.0.12/virtualbox-7.0_7.0.12-159484~Ubuntu~jammy_amd64.deb
+#  when: ansible_kernel == "6.5.0-14-generic"
+####
+
+
+
+- name: Gestiona aplicaciones en flatpak
+  include_role:
+    name: flatpaks
+  tags:
+    - slow
+    - flatpak
+
+- name: Gestiona aplicaciones en snap
+  include_role:
+    name: snaps
+  tags:
+    - slow
+    - snap
+
+- name: Gestiona paquetes en Ubuntu 20.04
+  include_role:
+    name: paquetes-ubuntu-2004
+  when: ansible_distribution_version == "20.04"
+
+- name: Gestiona paquetes en Ubuntu 22.04
+  include_role:
+    name: paquetes-ubuntu-2204
+  when: ansible_distribution_version == "22.04"
+
+- name: Gestiona paquetes en Ubuntu 23.10
+  include_role:
+    name: paquetes-ubuntu-2310
+  when: ansible_distribution_version == "23.10"
+
+- name: Gestiona paquetes en Fedora
+  include_role:
+    name: paquetes-fedora
+  when: ansible_distribution_version == "34"
+  tags:
+    - paquetes-fedora
+
+# Actualiza a la última versión
+#- name: Actualiza a la última versión
+#  apt:
+#    state: latest
+#    update_cache: yes
+#    pkg: 
+#      - firefox
+#      - firefox-locale-ca
+#      - flashplugin-installer
+#      - net-tools
+#      - vim
+#  ignore_errors: True
+#  register: result
+#  when: ansible_distribution_version == "20.04"
+
+#- name: Si es necesario ejecuta 'dpkg --configure -a'
+#  shell: dpkg --configure -a
+#  when: result is failed
+
+
+# Cambio de Virtualbox. Se desinstala la versión de los repos y se instala la versión de Oracle.
+#- name: Quita Virtualbox 6.1 de los repos
+#  apt:
+#    state: absent
+#    pkg:
+#      - virtualbox
+#      - virtualbox-dkms
+
+#- name: Copia paquete de Virtualbox
+#  copy:
+#    src: /home/vcarceler/playbooks-ubuntu2004/files/virtualbox-6.1_6.1.16-140961~Ubuntu~eoan_amd64.deb
+#    dest: /opt
+
+#- name: Instala Virtualbox libre de Oracle
+#  apt:
+#    deb: /opt/virtualbox-6.1_6.1.16-140961~Ubuntu~eoan_amd64.deb 

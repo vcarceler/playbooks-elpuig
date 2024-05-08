@@ -1,0 +1,59 @@
+---
+- hosts: lenovo-v510
+  user: root
+  #connection: paramiko
+
+  vars:
+    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,sambashare,ubridge,vboxusers
+
+  roles:
+    - delete-users
+    - lock-sshd
+    - zsys-gc
+    - swappiness-0
+    - role: vasilisa
+      vars:
+        sirin: "http://192.168.240.18:8000/launcher/?label=lenovo-v510-u2004.yml"
+    - activate-unattended-upgrades
+    - role: cambia-hostname
+      vars:
+        base_hostname: "lenovo-v510"
+    - gnome3-dconf
+      #- mlink
+    - software-2004
+    - apache-userdir
+    - wireshark
+    - gns3
+    - dotnet
+    - kvm
+    - lxd-zfs
+    - glpi-agent
+    - convidat
+    - apagado-1455
+    - apagado-2130
+
+  tasks:
+    # Usuarios
+    - include: users/esobat/grupos/tec1a-g1.yml
+    - include: users/esobat/grupos/tec1a-g2.yml
+    - include: users/esobat/grupos/tec1b-g1.yml
+    - include: users/esobat/grupos/tec1b-g2.yml
+    - include: users/esobat/grupos/tec1c-g1.yml
+    - include: users/esobat/grupos/tec1c-g2.yml
+    - include: users/esobat/grupos/tec1d-g1.yml
+    - include: users/esobat/grupos/tec1d-g2.yml
+    - include: users/esobat/grupos/tec1e-g1.yml
+    - include: users/esobat/grupos/tec1e-g2.yml
+    - include: users/esobat/grupos/tec2a-g1.yml
+    - include: users/esobat/grupos/tec2a-g2.yml
+    - include: users/esobat/grupos/tec2b-g1.yml
+    - include: users/esobat/grupos/tec2b-g2.yml
+    - include: users/esobat/grupos/tec2c-g1.yml
+    - include: users/esobat/grupos/tec2c-g2.yml
+    - include: users/esobat/grupos/tec2d-g1.yml
+    - include: users/esobat/grupos/tec2d-g2.yml
+    - include: users/esobat/grupos/tec2e-g1.yml
+    - include: users/esobat/grupos/tec2e-g2.yml
+    - include: users/esobat/grupos/tec-fi.yml
+    - include: users/esobat/grupos/tec-fii.yml
+    - include: users/esobat/grupos/robo1.yml
