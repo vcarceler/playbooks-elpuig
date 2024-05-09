@@ -64,7 +64,7 @@
     - python3-docutils
     - python3-easygui
     - python3-pip
-    - python3-pylint-django
+      #- python3-pylint-django
     - python3-pypdf2
     - relational
       #- renpy
@@ -78,7 +78,7 @@
     - ttf-mscorefonts-installer
       #- ubuntu-desktop-minimal
     - unrar
-    - vagrant
+      #- vagrant
     - vim
     - virt-top
     - virtualbox
