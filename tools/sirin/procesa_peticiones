@@ -9,7 +9,7 @@
 # Sirin's manage.py
 #MANAGE="/home/vcarceler/sirin/sirin/manage.py"
 
-secret=
+secret=`cat /home/vcarceler/playbooks-elpuig/secrets/sirin-password`
 
 # ARA
 playbooks="/home/vcarceler/playbooks-elpuig"
