@@ -29,7 +29,7 @@
     - glpi-agent
     - convidat
     #- apagado-1455
-    #- apagado-2130
+    - apagado-2130
 
   tasks:
     # Usuarios

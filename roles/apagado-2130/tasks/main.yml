@@ -18,10 +18,10 @@
     mode: u=rw,g=r,o=r
 
 - name: Activa la notificación del apagado a las 21:30
-  systemd:
+  systemd_service:
     enabled: yes
     state: started
-    scope: global
+    scope: user
     name: notifica-apagado-2130.timer
 
 # - name: Activa la notificación del apagado a las 21:30
