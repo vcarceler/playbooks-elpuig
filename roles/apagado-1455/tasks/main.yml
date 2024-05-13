@@ -21,7 +21,7 @@
   systemd:
     enabled: yes
     state: started
-    scope: global
+    scope: user
     name: notifica-apagado-1455.timer
 
 # - name: Activa la notificación del apagado a las 14:55
