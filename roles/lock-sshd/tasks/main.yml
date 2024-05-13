@@ -4,4 +4,4 @@
     regexp: '^#PasswordAuthentication yes'
     replace: 'PasswordAuthentication no'
   notify:
-    - restart sshd
+    - restart ssh
