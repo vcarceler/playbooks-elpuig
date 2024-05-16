@@ -397,12 +397,7 @@ Lenovo-V510
 [dpt-historia]
 192.168.240.245
 
-# Listados desde la puerta hacia la ventana
-[dpt-inf-2204]
-192.168.17.27
-192.168.17.197
-
-[dpt-inf]
+[dpt_inf]
 # junto a la puerta
 192.168.17.27
 192.168.17.28

@@ -1,5 +1,5 @@
 ---
-- hosts: test_u2404
+- hosts: dpt_inf
   user: root
 
   vars:
