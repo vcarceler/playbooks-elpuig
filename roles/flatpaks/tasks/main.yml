@@ -210,10 +210,10 @@
           name: https://dl.flathub.org/repo/appstream/org.kicad.KiCad.flatpakref
           state: present
 
-- name: Instala flatpak de kooha
-  flatpak:
-          name: https://dl.flathub.org/repo/appstream/io.github.seadve.Kooha.flatpakref
-          state: present
+#- name: Instala flatpak de kooha
+#  flatpak:
+#          name: https://dl.flathub.org/repo/appstream/io.github.seadve.Kooha.flatpakref
+#          state: present
 
 - name: Instala flatpak de krita
   flatpak:
