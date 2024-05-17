@@ -58,10 +58,10 @@
           name: https://dl.flathub.org/repo/appstream/cc.arduino.arduinoide.flatpakref
           state: present
 
-- name: Instala flatpak de atom
-  flatpak:
-          name: https://dl.flathub.org/repo/appstream/io.atom.Atom.flatpakref
-          state: present
+#- name: Instala flatpak de atom
+#  flatpak:
+#          name: https://dl.flathub.org/repo/appstream/io.atom.Atom.flatpakref
+#          state: present
 
 - name: Instala flatpak de audacity
   flatpak:
