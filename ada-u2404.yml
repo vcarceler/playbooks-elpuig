@@ -20,7 +20,7 @@
     - timesyncd-ntp
     - ubuntu-desktop-minimal
     - software
-    - gnome-dconf-2204
+    - gnome-dconf-2404
     - wireshark
     - kvm
     - lxd-dir

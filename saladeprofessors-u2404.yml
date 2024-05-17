@@ -15,11 +15,11 @@
     - activate-unattended-upgrades
     - role: cambia-hostname
       vars:
-        base_hostname: "dpt-inf"
+        base_hostname: "saladeprofessors"
     - timesyncd-ntp
     - ubuntu-desktop-minimal
     - software
-    - gnome-dconf-2204
+    - gnome-dconf-2404
     - wireshark
     - kvm
     - lxd-dir
