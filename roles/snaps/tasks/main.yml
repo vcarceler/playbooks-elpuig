@@ -76,6 +76,11 @@
     name: go
     classic: yes
 
+- name: Instala snap intellij-idea-community
+  snap:
+    name: intellij-idea-community
+    classic: yes
+
 #- name: Instala snap jupyter
 #  snap:
 #        name: jupyter
