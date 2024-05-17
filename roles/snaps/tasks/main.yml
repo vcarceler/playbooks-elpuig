@@ -71,6 +71,11 @@
   snap:
         name: cura-slicer
 
+- name: Instala snap go
+  snap:
+    name: go
+    classic: yes
+
 #- name: Instala snap jupyter
 #  snap:
 #        name: jupyter
