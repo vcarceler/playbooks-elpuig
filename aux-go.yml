@@ -1,0 +1,14 @@
+---
+- hosts: ada
+  user: root
+
+  tasks:
+    - name: Quita golang
+      apt:
+        name: golang-1.18-go
+        state: absent
+
+    - name: Pon el snap de go
+      snap:
+        name: go
+        classic: yes
