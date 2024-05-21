@@ -135,16 +135,16 @@ done
 #
 # Retiramos virtualbox-7.0 en Ubuntu 22.04
 #
-if [ -f /usr/bin/apt ]
-then
-	apt list | grep virtualbox-7.0
-	if [ $? == 0 ]
-	then
-		apt remove --yes virtualbox-7.0
-		apt update
-		apt install --yes virtualbox
-	fi
-fi
+#if [ -f /usr/bin/apt ]
+#then
+#	apt list | grep virtualbox-7.0
+#	if [ $? == 0 ]
+#	then
+#		apt remove --yes virtualbox-7.0
+#		apt update
+#		apt install --yes virtualbox
+#	fi
+#fi
 
 #
 # Actualizaciones del sistema
