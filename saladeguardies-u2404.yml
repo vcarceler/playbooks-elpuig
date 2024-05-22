@@ -1,33 +1,32 @@
 ---
 - hosts: saladeguardies
   user: root
+  strategy: free
 
   vars:
-    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,sambashare,ubridge,vboxusers
+    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,vboxusers
 
   roles:
     - delete-users
     - lock-sshd
-    - zsys-gc
     - swappiness-0
     - role: vasilisa
       vars:
-        sirin: "http://192.168.240.18:8000/launcher/?label=saladeguardies-u2004.yml"
+        sirin: "http://192.168.17.18:8080/register/saladeguardies-u2404.yml"
     - activate-unattended-upgrades
     - role: cambia-hostname
       vars:
-        base_hostname: "saladeguardies"
-    - gnome3-dconf
-    - software-2004
-    - apache-userdir
+        base_hostname: "saladeprofessors"
+    - timesyncd-ntp
+    - ubuntu-desktop-minimal
+    - software
+    - gnome-dconf-2404
     - wireshark
-    - gns3
-    - dotnet
     - kvm
-    - lxd-zfs
+    - lxd-dir
     - glpi-agent
     - convidat
-    #- apagado-1455
+      #- apagado-1455
     - apagado-2130
 
   tasks:
