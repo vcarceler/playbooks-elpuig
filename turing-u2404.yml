@@ -4,6 +4,7 @@
   strategy: free
 
   vars:
+    # He tenido que quitar los grupos sambashare,ubridge
     grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,vboxusers
 
   roles:
@@ -12,7 +13,7 @@
     - swappiness-0
     - role: vasilisa
       vars:
-        sirin: "http://192.168.18.18:8000/launcher/?label=turing-u2204.yml"
+        sirin: "http://192.168.18.18:8080/register/turing-u2404.yml"
     - activate-unattended-upgrades
     - role: cambia-hostname
       vars:
@@ -20,11 +21,8 @@
     - timesyncd-ntp
     - ubuntu-desktop-minimal
     - software
-    - firefox-cambia-snap-por-flatpak
-    - gnome-dconf-2204
-    - apache-userdir
+    - gnome-dconf-2404
     - wireshark
-      #- dotnet
     - kvm
     - lxd-dir
     - glpi-agent
@@ -34,6 +32,8 @@
 
   tasks:
     # Usuarios
-    #- include: users/informatica/alumnos/smx1d.yml
-    - include: users/informatica/alumnos/smx2b.yml
-    - include: users/informatica/alumnos/smx2c.yml
+    - include_tasks: users/informatica/alumnos/smx2b.yml
+    - include_tasks: users/informatica/alumnos/smx2c.yml
+    #- include: users/informatica/smx2a.yml
+    #- include: users/informatica/smx2b.yml
+    #- include: users/informatica/smx2c.yml
