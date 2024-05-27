@@ -66,6 +66,7 @@
     - python3-pip
       #- python3-pylint-django
     - python3-pypdf2
+    - python3-venv
     - relational
       #- renpy
     - rst2pdf
