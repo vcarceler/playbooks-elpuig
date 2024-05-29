@@ -1,0 +1,9 @@
+---
+- hosts: portatils-alumnes-f34
+  user: root
+  strategy: free
+
+  roles:
+    - role: vasilisa
+      vars:
+        sirin: "http://10.0.0.2:8080/register/portatils-alumnes-f34.yml"
