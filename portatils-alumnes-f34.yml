@@ -11,7 +11,7 @@
     - lock-sshd
     - role: vasilisa
       vars:
-        sirin: "http://10.0.0.2:8000/launcher/?label=portatils-alumnes-f34.yml"
+        sirin: "http://10.0.0.2:8080/register/portatils-alumnes-f34.yml"
     - role: cambia-hostname-wg0
       vars:
         base_hostname: "alumne"
