@@ -1,0 +1,13 @@
+---
+- hosts: portatils-alumnes-f34
+  user: root
+  strategy: free
+  gather_facts: no
+
+  tasks:
+
+    - name: Prepara la URL para Sirin
+      lineinfile:
+        path: /opt/sirin
+        regexp: "^.*$"
+        line: "http://10.0.0.2:8080/register/portatils-alumnes-f34.yml"

@@ -5,7 +5,8 @@
 
   vars:
     # He tenido que quitar los grupos sambashare,ubridge
-    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,vboxusers
+    # Añado tty para que puedan utilizar minicom con un cable
+    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty,vboxusers
 
   roles:
     - delete-users
