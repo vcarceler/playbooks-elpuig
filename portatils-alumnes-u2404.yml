@@ -21,6 +21,7 @@
       vars:
         base_hostname: "alumne"
     - timesyncd-ntp
+    - systemd-freeze
     - ubuntu-desktop-minimal
     - software
     - gnome-dconf-2404
