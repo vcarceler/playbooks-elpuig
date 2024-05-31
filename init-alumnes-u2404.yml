@@ -1,5 +1,5 @@
 ---
-- hosts: portatils_alumnes_u2404
+- hosts: init_portatils_alumnes_u2404
   user: root
   strategy: free
 

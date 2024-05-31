@@ -826,8 +826,11 @@ dpt-dibuix
 # Aula 202
 192.168.17.52
 
-# MAC registradas en Kea
 [portatils_alumnes_u2404]
+10.0.3.120
+
+# MAC registradas en Kea
+[init_portatils_alumnes_u2404]
 192.168.245.1 vpn=10.0.3.120
 
 [init-portatils-alumnes-f34]
