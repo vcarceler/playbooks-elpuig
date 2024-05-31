@@ -3,7 +3,7 @@
     update_cache: yes
     pkg:
       - wireguard-tools
-  when: ansible_distribution_version == "20.04"
+  when: ansible_distribution_version == "24.04"
 
 - name: Instala wireguard-tools (Fedora)
   dnf:
