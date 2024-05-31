@@ -1,0 +1,11 @@
+---
+# Hace que NetworkManager no gestione wg0
+
+- name: Hace que NetworkManager no gestione wg0
+  blockinfile:
+    path: /etc/NetworkManager/conf.d/unmanaged-wg0.conf
+    create: true
+    block: |
+      [device-wg0-unmanage]
+      match-device=interface-name:wg0
+      managed=0

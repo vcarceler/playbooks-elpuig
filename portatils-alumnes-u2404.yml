@@ -28,6 +28,7 @@
     - lxd-dir
     - glpi-agent
     - wireguard
+    - nm-unmanage-wg0
       #- convidat
 
   tasks:
