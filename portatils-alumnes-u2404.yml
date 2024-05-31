@@ -16,7 +16,7 @@
       vars:
         sirin: "http://10.0.0.2:8080/register/portatils-alumnes-u2404.yml"
     - activate-unattended-upgrades
-    - role: cambia-hostname
+    - role: cambia-hostname-wg0
       vars:
         base_hostname: "alumne"
     - timesyncd-ntp

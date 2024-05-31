@@ -1,30 +1,37 @@
 ---
 - hosts: portatils_alumnes_u2404
   user: root
-  #gather_facts: no
   strategy: free
 
   vars:
-    grupos: adm,cdrom,dialout
+    grupos: adm,cdrom,dialout,lpadmin,plugdev
 
   roles:
     - delete-users
     - lock-sshd
+    - swappiness-0
+
     - role: vasilisa
       vars:
-        sirin: "http://10.0.0.2:8080/register/portatils-alumnes-u2404.yml"
-    #- role: cambia-hostname-wg0
-    #  vars:
-    #    base_hostname: "alumne"
-    - wireguard
-    #- convidat
-    #- apagado-1455
-    #- apagado-2130
+        sirin: "http://10.0.0.2:8000/launcher/?label=portatils-docents-u2204.yml"
+
+    - activate-unattended-upgrades
+
+    - role: cambia-hostname
+      vars:
+        base_hostname: "docent"
+      
+    - glpi-agent
+      
     - flush-handlers
 
   tasks:
-    # Cada equipo tiene un usuario particular
-    - include_tasks: "vpn/{{ vpn }}.yml"
+    - name: Instala wireguard-tools
+      apt:
+        name: wireguard-tools
+        state: present
+
+    - include: "vpn/{{ vpn }}.yml"
 
     - name: Activa la VPN wg0 (enable y start)
       systemd:
@@ -33,13 +40,5 @@
         state: started
         daemon_reload: yes
 
-    - name: Apaga el equipo
-      command: systemctl poweroff
-      async: 10
-      poll: 0
-
-
-    # Usuarios
-    #- include: users/informatica/smx2a.yml
-    #- include: users/informatica/smx2b.yml
-    #- include: users/informatica/smx2c.yml
+    - name: Reboot
+      reboot:
