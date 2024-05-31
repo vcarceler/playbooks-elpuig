@@ -1,5 +1,5 @@
 ---
-- hosts: 192.168.17.108
+- hosts: portatils_alumnes_u2404
   user: root
   strategy: free
 
@@ -14,7 +14,7 @@
     - swappiness-0
     - role: vasilisa
       vars:
-        sirin: "http://192.168.240.18:8080/register/portatils-alumnes-u2404.yml"
+        sirin: "http://10.0.0.2:8080/register/portatils-alumnes-u2404.yml"
     - activate-unattended-upgrades
     - role: cambia-hostname
       vars:
@@ -30,9 +30,5 @@
     - convidat
 
   tasks:
-    # Usuarios
-    - include_tasks: users/informatica/alumnos/smx2a.yml
-    #- include_tasks: users/informatica/alumnos/asix2a.yml
-    #- include: users/informatica/smx2a.yml
-    #- include: users/informatica/smx2b.yml
-    #- include: users/informatica/smx2c.yml
+    # Usuario personal
+    - include_tasks: "vpn/{{ ansible_host }}.yml"

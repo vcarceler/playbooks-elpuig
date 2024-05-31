@@ -828,7 +828,7 @@ dpt-dibuix
 
 # MAC registradas en Kea
 [portatils_alumnes_u2404]
-
+192.168.245.1 vpn=10.0.3.120
 
 [init-portatils-alumnes-f34]
 192.168.242.132 vpn=10.0.1.130
