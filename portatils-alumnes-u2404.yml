@@ -32,4 +32,4 @@
 
   tasks:
     # Usuario personal
-    - include_tasks: "vpn/{{ vpn }}.yml"
+    - include_tasks: "vpn/{{ ansible_host }}.yml"
