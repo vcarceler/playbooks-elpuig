@@ -1,0 +1,15 @@
+---
+
+- name: Crea el directorio /etc/systemd/sleep.conf.d
+  file:
+    path: /etc/systemd/sleep.conf.d
+    state: directory
+
+# https://www.kernel.org/doc/html/latest/admin-guide/pm/sleep-states.html#basic-sysfs-interfaces-for-system-suspend-and-hibernation
+- name: Hace que el ordenador se suspenda (RAM) en lugar de hibernar
+  blockinfile:
+    path: /etc/systemd/sleep.conf.d/freeze.conf
+    create: true
+    block: |
+      [Sleep]
+      SuspendState=freeze
