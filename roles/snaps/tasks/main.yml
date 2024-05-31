@@ -17,46 +17,12 @@
     state: link
   when: ansible_distribution_version == "34"
 
-- name: Elimina snaps deprecated
-  snap:
-          state: absent
-          name:
+#- name: Elimina snaps deprecated
+#  snap:
+#          state: absent
+#          name:
                   #- atom
-                  - blender
-                  - bluej
-                  - brackets
-                  - code
-                  - darktable
-                  - eclipse
-                  - flameshot
-                  - gimp
-                  - godot-3-1
-                  - inkscape
-                  - intellij-idea-educational
-                  - kalgebra
-                  - kbruch
-                  - kcalc
-                    #- kdenlive
-                  - kig
-                  - ktouch
-                  - krita
-                  - librepcb
-                  - musescore
-                  - mysql-workbench-community
-                  - netbeans
-                  - natron
-                  - node
-                  - octave
-                  - obs-studio
-                  - pdfmixtool
-                  - pdftk
-                  - qalculate
-                  - ruby
-                  - shotcut
-                  - syncthing
-                  - sweethome3d-homedesign
-                  - umbrello
-                  - vlc
+                  #- blender
 
 - name: Instala snap beekeeper-studio
   snap:
@@ -93,10 +59,10 @@
 #  snap:
 #        name: kmplot
 
-- name: Instala snap kotlin
-  snap:
-        name: kotlin
-        classic: yes
+#- name: Instala snap kotlin
+#  snap:
+#        name: kotlin
+#        classic: yes
 
 #- name: Desinstala snap node edge
 #  snap:
