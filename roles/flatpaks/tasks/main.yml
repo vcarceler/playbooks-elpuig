@@ -83,10 +83,10 @@
           name: https://dl.flathub.org/repo/appstream/com.brave.Browser.flatpakref
           state: present
 
-- name: Instala flatpak de calibre
-  flatpak:
-          name: https://dl.flathub.org/repo/appstream/com.calibre_ebook.calibre.flatpakref
-          state: present
+#- name: Instala flatpak de calibre
+#  flatpak:
+#          name: https://dl.flathub.org/repo/appstream/com.calibre_ebook.calibre.flatpakref
+#          state: present
 
 - name: Instala flatpak de chromium
   flatpak:
@@ -118,10 +118,10 @@
           name: https://dl.flathub.org/repo/appstream/com.diy_fever.DIYLayoutCreator.flatpakref
           state: present
 
-- name: Instala flatpak de eclipse
-  flatpak:
-          name: https://dl.flathub.org/repo/appstream/org.eclipse.Java.flatpakref
-          state: present
+#- name: Instala flatpak de eclipse
+#  flatpak:
+#          name: https://dl.flathub.org/repo/appstream/org.eclipse.Java.flatpakref
+#          state: present
 
 - name: Instala flatpak de filezilla
   flatpak:
@@ -148,10 +148,10 @@
           name: https://dl.flathub.org/repo/appstream/org.gaphor.Gaphor.flatpakref
           state: present
 
-- name: Instala flatpak de geany
-  flatpak:
-          name: https://dl.flathub.org/repo/appstream/org.geany.Geany.flatpakref
-          state: present
+#- name: Instala flatpak de geany
+#  flatpak:
+#          name: https://dl.flathub.org/repo/appstream/org.geany.Geany.flatpakref
+#          state: present
 
 - name: Instala flatpak de geogebra
   flatpak:
@@ -240,10 +240,10 @@
           name: https://dl.flathub.org/repo/appstream/org.musescore.MuseScore.flatpakref
           state: present
 
-- name: Instala flatpak de natron
-  flatpak:
-          name: https://dl.flathub.org/repo/appstream/fr.natron.Natron.flatpakref
-          state: present
+#- name: Instala flatpak de natron
+#  flatpak:
+#          name: https://dl.flathub.org/repo/appstream/fr.natron.Natron.flatpakref
+#          state: present
 
 #- name: Instala flatpak de netbeans
 #  flatpak:
@@ -300,10 +300,10 @@
           name: https://dl.flathub.org/repo/appstream/com.github.junrrein.PDFSlicer.flatpakref
           state: present
 
-- name: Instala flatpak de peek
-  flatpak:
-          name: https://dl.flathub.org/repo/appstream/com.uploadedlobster.peek.flatpakref
-          state: absent
+#- name: Instala flatpak de peek
+#  flatpak:
+#          name: https://dl.flathub.org/repo/appstream/com.uploadedlobster.peek.flatpakref
+#          state: absent
 
 - name: Instala flatpak de prusaslicer
   flatpak:
