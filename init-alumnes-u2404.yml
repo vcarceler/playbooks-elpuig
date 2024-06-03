@@ -31,7 +31,7 @@
         name: wireguard-tools
         state: present
 
-    - include: "vpn/{{ vpn }}.yml"
+    - include_tasks: "vpn/{{ vpn }}.yml"
 
     - name: Activa la VPN wg0 (enable y start)
       systemd:
