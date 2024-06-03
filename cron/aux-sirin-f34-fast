@@ -1,0 +1,10 @@
+#!/bin/bash
+
+#
+# Actualizamos la URL de Sirin (sirin-go) para los portátiles de alumno con F34
+#
+
+playbooks="/home/vcarceler/playbooks-elpuig"
+export ANSIBLE_CALLBACK_PLUGINS="$(python3 -m ara.setup.callback_plugins)"
+
+nice ansible-playbook -i $playbooks/hosts $playbooks/aux-sirin-f34-fast.yml
