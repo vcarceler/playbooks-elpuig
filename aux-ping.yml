@@ -1,5 +1,5 @@
 ---
-- hosts: turing
+- hosts: 10.0.3.120
   user: root
 
   tasks:

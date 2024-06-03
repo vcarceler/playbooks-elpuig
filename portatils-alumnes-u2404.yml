@@ -1,7 +1,7 @@
 ---
 - hosts: portatils_alumnes_u2404
   user: root
-  strategy: free
+  #strategy: free
 
   vars:
     # He tenido que quitar los grupos sambashare,ubridge
@@ -21,7 +21,6 @@
       vars:
         base_hostname: "alumne"
     - timesyncd-ntp
-    - systemd-freeze
     - ubuntu-desktop-minimal
     - software
     - gnome-dconf-2404
@@ -32,6 +31,10 @@
     - wireguard
     - nm-unmanage-wg0
       #- convidat
+
+      # Los Lenovo 300w Yoga Gen 4 no hibernan bien pero pueden suspender.
+    - role: systemd-freeze
+      when: ansible_chassis_version == 'Lenovo 300w Yoga Gen 4'
 
   tasks:
     # Usuario personal
