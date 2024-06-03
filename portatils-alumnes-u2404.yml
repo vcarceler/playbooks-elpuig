@@ -1,7 +1,7 @@
 ---
 - hosts: portatils_alumnes_u2404
   user: root
-  #strategy: free
+  strategy: free
 
   vars:
     # He tenido que quitar los grupos sambashare,ubridge
