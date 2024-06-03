@@ -13,15 +13,17 @@
 
     - role: vasilisa
       vars:
-        sirin: "http://10.0.0.2:8000/launcher/?label=portatils-docents-u2204.yml"
+        sirin: "http://10.0.0.2:8080/register/portatils-alumnes-u2404.yml"
 
     - activate-unattended-upgrades
 
     - role: cambia-hostname
       vars:
-        base_hostname: "docent"
+        base_hostname: "alumne"
       
     - glpi-agent
+
+    - nm-unmanage-wg0
       
     - flush-handlers
 
