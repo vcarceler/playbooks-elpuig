@@ -15,7 +15,7 @@
     - role: cambia-hostname-wg0
       vars:
         base_hostname: "alumne"
-    - software-2404
+    - software
     - lxd-fedora
     - glpi-agent
     - report-idalu
