@@ -33,6 +33,6 @@
 
   tasks:
     # Usuarios
-    #- include: users/informatica/smx2a.yml
-    #- include: users/informatica/smx2b.yml
-    #- include: users/informatica/smx2c.yml
+    #- include_tasks: users/informatica/smx2a.yml
+    #- include_tasks: users/informatica/smx2b.yml
+    #- include_tasks: users/informatica/smx2c.yml

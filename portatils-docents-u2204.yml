@@ -33,4 +33,4 @@
 
   tasks:
     # Cada equipo tiene un usuario particular
-    - include: "vpn/{{ ansible_host }}.yml"
+    - include_tasks: "vpn/{{ ansible_host }}.yml"

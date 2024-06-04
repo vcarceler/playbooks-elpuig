@@ -35,7 +35,7 @@
 
   tasks:
     # Usuarios
-    - include: users/informatica/alumnos/dam2a.yml
-    - include: users/aig/alumnos/ga1a.yml
-    - include: users/aig/alumnos/ga1b.yml
-    - include: users/aig/alumnos/ga2.yml
+    - include_tasks: users/informatica/alumnos/dam2a.yml
+    - include_tasks: users/aig/alumnos/ga1a.yml
+    - include_tasks: users/aig/alumnos/ga1b.yml
+    - include_tasks: users/aig/alumnos/ga2.yml

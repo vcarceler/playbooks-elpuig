@@ -34,9 +34,9 @@
 
   tasks:
     # Usuarios
-    #- include: users/esobat/docent.yml
-    #- include: users/informatica/alumnos/asix2b.yml
-    #- include: users/informatica/alumnos/smx1c.yml
-    #- include: users/informatica/alumnos/dam2a.yml
-    #- include: users/informatica/alumnos/dam2b.yml
-    #- include: users/informatica/smx2c.yml
+    #- include_tasks: users/esobat/docent.yml
+    #- include_tasks: users/informatica/alumnos/asix2b.yml
+    #- include_tasks: users/informatica/alumnos/smx1c.yml
+    #- include_tasks: users/informatica/alumnos/dam2a.yml
+    #- include_tasks: users/informatica/alumnos/dam2b.yml
+    #- include_tasks: users/informatica/smx2c.yml

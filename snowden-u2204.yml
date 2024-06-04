@@ -33,5 +33,5 @@
 
   tasks:
     # Usuarios
-    - include: users/informatica/alumnos/smx1d.yml
-    #- include: users/aig/alumnos/ga2.yml
+    - include_tasks: users/informatica/alumnos/smx1d.yml
+    #- include_tasks: users/aig/alumnos/ga2.yml

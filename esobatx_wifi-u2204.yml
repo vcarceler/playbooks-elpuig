@@ -34,14 +34,14 @@
 
   tasks:
     # Usuarios
-    - include: users/esobat/docent.yml
-    - include: users/informatica/luis.yml
+    - include_tasks: users/esobat/docent.yml
+    - include_tasks: users/informatica/luis.yml
       when: ansible_default_ipv4.address == "192.168.240.176"
-    - include: users/informatica/luis.yml
+    - include_tasks: users/informatica/luis.yml
       when: ansible_default_ipv4.address == "192.168.240.180"
-    - include: users/informatica/daniel.martinez.yml
+    - include_tasks: users/informatica/daniel.martinez.yml
       when: ansible_default_ipv4.address == "192.168.240.180"
-    - include: users/informatica/jcamunez.yml
+    - include_tasks: users/informatica/jcamunez.yml
       when: ansible_default_ipv4.address == "192.168.240.180"
-    #- include: users/informatica/smx2b.yml
-    #- include: users/informatica/smx2c.yml
+    #- include_tasks: users/informatica/smx2b.yml
+    #- include_tasks: users/informatica/smx2c.yml

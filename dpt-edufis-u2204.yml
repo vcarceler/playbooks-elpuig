@@ -32,8 +32,8 @@
     - apagado-2130
 
   tasks:
-    - include: users/esobat/docent.yml
+    - include_tasks: users/esobat/docent.yml
     # Usuarios
-    #- include: users/informatica/smx2a.yml
-    #- include: users/informatica/smx2b.yml
-    #- include: users/informatica/smx2c.yml
+    #- include_tasks: users/informatica/smx2a.yml
+    #- include_tasks: users/informatica/smx2b.yml
+    #- include_tasks: users/informatica/smx2c.yml

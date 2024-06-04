@@ -35,7 +35,7 @@
 
   tasks:
     # Usuarios
-    - include: users/consergeria/consergeria.yml
-      #- include: users/informatica/alumnos/smx2a.yml
-      #- include: users/informatica/alumnos/asix2a.yml
-    #- include: users/informatica/smx2c.yml
+    - include_tasks: users/consergeria/consergeria.yml
+      #- include_tasks: users/informatica/alumnos/smx2a.yml
+      #- include_tasks: users/informatica/alumnos/asix2a.yml
+    #- include_tasks: users/informatica/smx2c.yml
