@@ -1,5 +1,5 @@
 ---
-- hosts: 10.0.3.120
+- hosts: torvalds
   user: root
 
   tasks:

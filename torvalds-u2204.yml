@@ -35,8 +35,9 @@
 
   tasks:
     # Usuarios
-    - include: users/informatica/alumnos/smx1a.yml
-    - include: users/informatica/alumnos/dam1.yml
+    - include_tasks: users/informatica/alumnos/smx1a.yml
+    - include_tasks: users/informatica/alumnos/dam1.yml
+    - include_tasks: users/informatica/alumnos/user-a.yml
     #- include: users/informatica/alumnos/asixdam1a.yml
     #- include: users/informatica/alumnos/isardvdi.yml
 
