@@ -1,6 +1,7 @@
 ---
 - hosts: dpt_inf
   user: root
+  strategy: free
 
   vars:
     grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,sambashare,ubridge,vboxusers
