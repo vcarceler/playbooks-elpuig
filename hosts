@@ -832,11 +832,17 @@ dpt-dibuix
 10.0.3.120
 # Modelo antiguo (prueba)
 10.0.0.138
+# Dos de Jaime
+10.0.1.219
+10.0.1.250
 
 # MAC registradas en Kea
 [init_portatils_alumnes_u2404]
 192.168.245.1 vpn=10.0.3.120
 192.168.243.5 vpn=10.0.0.138
+# Dos de Jaime
+192.168.242.197 vpn=10.0.1.219
+192.168.243.121 vpn=10.0.1.250
 
 [init-portatils-alumnes-f34]
 192.168.242.132 vpn=10.0.1.130
