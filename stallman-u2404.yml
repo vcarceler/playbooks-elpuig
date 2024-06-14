@@ -1,0 +1,40 @@
+---
+- hosts: stallman
+  user: root
+  strategy: free
+
+  vars:
+    # He tenido que quitar los grupos sambashare,ubridge
+    # Añado tty para que puedan utilizar minicom con un cable
+    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty,vboxusers
+
+  roles:
+    - delete-users
+    - lock-sshd
+    - swappiness-0
+    - role: vasilisa
+      vars:
+        sirin: "http://192.168.11.18:8080/register/stallman-u2404.yml"
+    - activate-unattended-upgrades
+    - role: cambia-hostname
+      vars:
+        base_hostname: "stallman"
+    - timesyncd-ntp
+    - ubuntu-desktop-minimal
+    - software
+    - gnome-dconf-2404
+    - wireshark
+    - kvm
+    - lxd-dir
+    - glpi-agent
+    - convidat
+    - apagado-1455
+    - apagado-2130
+
+  tasks:
+    # Usuarios
+    - include_tasks: users/informatica/alumnos/smx2a.yml
+    - include_tasks: users/informatica/alumnos/asix2a.yml
+    #- include: users/informatica/smx2a.yml
+    #- include: users/informatica/smx2b.yml
+    #- include: users/informatica/smx2c.yml

@@ -50,7 +50,7 @@ with open('hosts-users.csv', newline='') as csvfile:
     group: root
     mode: 0400
 
-- include: "{{ userfile }}"
+- include_tasks: "{{ userfile }}"
 
 """
         template = Template(hostTemplate)

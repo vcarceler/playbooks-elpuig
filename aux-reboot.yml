@@ -1,5 +1,5 @@
 ---
-- hosts: torvalds
+- hosts: aif
   user: root
 
   roles:
