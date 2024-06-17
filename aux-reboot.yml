@@ -1,5 +1,5 @@
 ---
-- hosts: aif
+- hosts: stallman
   user: root
 
   roles:
