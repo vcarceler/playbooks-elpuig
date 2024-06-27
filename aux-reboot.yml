@@ -1,6 +1,7 @@
 ---
-- hosts: esobatx_wifi
+- hosts: carret16
   user: root
+  gather_facts: false
 
   roles:
     - reboot
