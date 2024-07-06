@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#
+# Script lanzado por Domovoi para inicializar portátiles de los alumnos
+#
+
+playbooks="/home/vcarceler/playbooks-elpuig"
+
+export PATH=/home/vcarceler/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+export ANSIBLE_CALLBACK_PLUGINS="$(python3 -m ara.setup.callback_plugins)"
+
+ansible-playbook -i $playbooks/hosts $playbooks/init-alumnes-u2404.yml --limit=$1
+#ansible-playbook -i $playbooks/hosts $playbooks/portatils-alumnes-u2404.yml --limit=$1
