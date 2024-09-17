@@ -33,8 +33,10 @@
 
   tasks:
     # Usuarios
-    - include_tasks: users/informatica/alumnos/smx2a.yml
+    - include_tasks: users/informatica/alumnos/smx1b.yml
     - include_tasks: users/informatica/alumnos/daw2.yml
-    #- include: users/informatica/smx2a.yml
-    #- include: users/informatica/smx2b.yml
-    #- include: users/informatica/smx2c.yml
+    - name: Borrado de usuarios antiguos
+      user:
+              name: smx2a
+              state: absent
+              remove: yes
