@@ -35,4 +35,4 @@
     # Usuarios
     #- include_tasks: users/informatica/alumnos/smx2a.yml
     #- include_tasks: users/informatica/alumnos/asix2a.yml
-    - include: users/informatica/alumnos/asix1.yml
+    - include_tasks: users/informatica/alumnos/asix1.yml
