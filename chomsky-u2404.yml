@@ -40,6 +40,8 @@
       when: ansible_default_ipv4.address == "192.168.23.100"
     - include_tasks: users/informatica/imart53.yml
       when: ansible_default_ipv4.address == "192.168.23.100"
+    - include_tasks: users/informatica/jmimo.yml
+      when: ansible_default_ipv4.address == "192.168.23.100"
     - include_tasks: users/informatica/llorent4.yml
       when: ansible_default_ipv4.address == "192.168.23.100"
     - include_tasks: users/informatica/yago.morales.yml

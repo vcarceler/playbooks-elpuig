@@ -35,6 +35,8 @@
     # Usuarios
     - include_tasks: users/informatica/alumnos/smx1a.yml
     - include_tasks: users/informatica/alumnos/dam1.yml
+    - include_tasks: users/informatica/english.yml
+      when: ansible_default_ipv4.address == "192.168.10.100"
     #- include: users/informatica/smx2a.yml
     #- include: users/informatica/smx2b.yml
     #- include: users/informatica/smx2c.yml

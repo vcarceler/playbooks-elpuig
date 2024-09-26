@@ -1,5 +1,5 @@
 ---
-- hosts: ada
+- hosts: asix2b
   user: root
   strategy: free
 
@@ -14,11 +14,11 @@
     - swappiness-0
     - role: vasilisa
       vars:
-        sirin: "http://192.168.12.18:8080/register/ada-u2404.yml"
+        sirin: "http://192.168.16.18:8080/register/asix2b-u2404.yml"
     - activate-unattended-upgrades
     - role: cambia-hostname
       vars:
-        base_hostname: "ada"
+        base_hostname: "asix2b"
     - timesyncd-ntp
     - ubuntu-desktop-minimal
     - software
@@ -33,10 +33,15 @@
 
   tasks:
     # Usuarios
-    - include_tasks: users/informatica/alumnos/smx2a.yml
-    - include_tasks: users/informatica/alumnos/daw1.yml
-    - include_tasks: users/informatica/english.yml
-      when: ansible_default_ipv4.address == "192.168.12.100"
-    #- include: users/informatica/smx2a.yml
-    #- include: users/informatica/smx2b.yml
-    #- include: users/informatica/smx2c.yml
+    - include_tasks: users/informatica/alumnos/asix2b.yml
+    - include_tasks: users/informatica/jmimo.yml
+    - include_tasks: users/informatica/llorent4.yml
+    - include_tasks: users/informatica/dgarcia.yml
+    - include_tasks: users/informatica/daniel.martinez.yml
+    - include_tasks: users/informatica/q2dg.yml
+    - include_tasks: users/informatica/imart53.yml
+    - name: Borrado de usuarios antiguos
+      user:
+              name: smx2a
+              state: absent
+              remove: yes
