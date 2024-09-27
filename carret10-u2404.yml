@@ -36,3 +36,7 @@
     #- include_tasks: users/informatica/alumnos/smx2a.yml
     #- include_tasks: users/informatica/alumnos/asix2a.yml
     - include_tasks: users/informatica/alumnos/asix2a.yml
+    - include_tasks: users/informatica/profes-asix2a.yml
+      when: ansible_default_ipv4.address == "192.168.244.112"
+    - include_tasks: users/informatica/profes-asix2a.yml
+      when: ansible_default_ipv4.address == "192.168.244.113"
