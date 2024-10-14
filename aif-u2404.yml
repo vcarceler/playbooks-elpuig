@@ -40,9 +40,11 @@
     - include_tasks: users/aig/alumnos/af2.yml
     - include_tasks: users/aig/docent.yml
       when: ansible_default_ipv4.address == "192.168.14.100"
+    - include_tasks: users/idiomes/tgrabovs.yml
+      when: ansible_default_ipv4.address == "192.168.14.100"
     - include_tasks: users/aig/docent.yml
       when: ansible_default_ipv4.address == "192.168.14.150"
-    - include_tasks: users/informatica/pille.yml
+    - include_tasks: users/idiomes/idiomes.yml
       when: ansible_default_ipv4.address == "192.168.14.100"
-    - include_tasks: users/informatica/pille.yml
+    - include_tasks: users/idiomes/idiomes.yml
       when: ansible_default_ipv4.address == "192.168.14.150"
