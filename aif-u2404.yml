@@ -48,3 +48,12 @@
       when: ansible_default_ipv4.address == "192.168.14.100"
     - include_tasks: users/idiomes/idiomes.yml
       when: ansible_default_ipv4.address == "192.168.14.150"
+
+    - name: Borrado de usuarios antiguos
+      user:
+        name: "{{ item }}"
+        state: absent
+        remove: true
+      loop:
+        - smx1d
+        - smx2b

@@ -1,1 +1,4 @@
 address,mask,privatekey,userpath,username,usercomment,password,olduser
+10.0.2.172,/20,ODjjvewAgD6M/f/w7BhDLFFaGZQe2rKfd+CXY1LHjXg=,users/alumnes,mohamedait,Mohamed Yassir Ait el Gharouch,7483,usuariinstall
+10.0.2.155,/20,kLMVoLfcfSKUPKurT7132AxNspih5VbWSn3qDsMpGGY=,users/alumnes,sheilaortiz,Sheila Ortiz Peiró,1694,usuariinstall
+10.0.1.211,/20,EDgx2ZFRwNNz5GiIoTCjfWGXxu3L7QJCNQQMsrSNJn0=,users/alumnes,adrianortiz,Adrián Ortiz Peiró,5656,usuariinstall
