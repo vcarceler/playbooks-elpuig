@@ -52,6 +52,10 @@
     name: intellij-idea-community
     classic: yes
 
+- name: Instala snap modelio
+  snap:
+    name: modelio
+
 #- name: Instala snap jupyter
 #  snap:
 #        name: jupyter
