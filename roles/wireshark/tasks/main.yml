@@ -1,3 +1,11 @@
+
+- name: Test sobre /opt/wireshark
+  # Se utiliza /opt/wireshark como flag para indicar que wireshark está
+  # debidamente instalado. 
+  stat:
+    path: /opt/wireshark
+  register: archivo
+
 - name: Wireshark let non root to capture traffic
   # Before installing any package, this only sets the preference for the question
   debconf:
@@ -6,9 +14,10 @@
     vtype='boolean'
     value='true'
   become: yes
-  notify:
-    - desinstala wireshark-common
-    - instala wireshark-common
+  when: not archivo.stat.exists
+#  notify:
+#    - desinstala wireshark-common
+#    - instala wireshark-common
 
 - name: Crea el grupo wireshark
   group:
@@ -16,7 +25,21 @@
     state: present
     system: yes
 
+- name: Desinstala Wireshark
+  apt:
+    state: absent
+    pkg:
+    - wireshark
+  when: not archivo.stat.exists
+
 - name: Instala Wireshark
   apt:
     pkg:
     - wireshark
+  when: not archivo.stat.exists
+
+- name: Crea /opt/wireshark para indicar que wireshark está хорошо
+  file:
+    path: /opt/wireshark
+    state: touch
+  when: not archivo.stat.exists

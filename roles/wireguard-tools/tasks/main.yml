@@ -1,0 +1,4 @@
+- name: Instala wireguard-tools
+  apt:
+    pkg:
+    - wireguard-tools

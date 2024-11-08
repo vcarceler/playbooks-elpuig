@@ -6,7 +6,7 @@
   vars:
     # He tenido que quitar los grupos sambashare,ubridge
     # Añado tty para que puedan utilizar minicom con un cable
-    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty,vboxusers
+    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty,vboxusers,wireshark
 
   roles:
     - delete-users
@@ -22,6 +22,7 @@
     - timesyncd-ntp
     - ubuntu-desktop-minimal
     - software
+    - wireguard-tools # q2dg lo ha pedido ;-)
     - gnome-dconf-2404
     - wireshark
     - kvm
