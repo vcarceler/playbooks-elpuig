@@ -6,6 +6,11 @@
     path: /opt/wireshark
   register: archivo
 
+
+    #
+    # https://stackoverflow.com/questions/64686729/dpkg-reconfigure-openssh-server-in-ansible-playbook
+    #
+
 - name: Wireshark let non root to capture traffic
   # Before installing any package, this only sets the preference for the question
   debconf:
@@ -15,6 +20,7 @@
     value='true'
   become: yes
   when: not archivo.stat.exists
+  register: reconfigure_changed
 #  notify:
 #    - desinstala wireshark-common
 #    - instala wireshark-common
@@ -25,18 +31,25 @@
     state: present
     system: yes
 
-- name: Desinstala Wireshark
-  apt:
-    state: absent
-    pkg:
-    - wireshark
-  when: not archivo.stat.exists
+#- name: Desinstala Wireshark
+#  apt:
+#    state: absent
+#    pkg:
+#    - wireshark
+#  when: not archivo.stat.exists
 
 - name: Instala Wireshark
   apt:
     pkg:
     - wireshark
   when: not archivo.stat.exists
+
+- name: Make debconf changes active
+  ansible.builtin.command:
+    cmd: "dpkg-reconfigure wireshark-common"
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+  when: reconfigure_changed.changed
 
 - name: Crea /opt/wireshark para indicar que wireshark está хорошо
   file:
