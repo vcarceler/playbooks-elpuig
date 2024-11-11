@@ -6,13 +6,10 @@
     path: /opt/wireshark
   register: archivo
 
-
-    #
-    # https://stackoverflow.com/questions/64686729/dpkg-reconfigure-openssh-server-in-ansible-playbook
-    #
-
 - name: Wireshark let non root to capture traffic
   # Before installing any package, this only sets the preference for the question
+  #
+  # https://stackoverflow.com/questions/64686729/dpkg-reconfigure-openssh-server-in-ansible-playbook
   debconf:
     name='wireshark-common'
     question='wireshark-common/install-setuid'
@@ -21,22 +18,12 @@
   become: yes
   when: not archivo.stat.exists
   register: reconfigure_changed
-#  notify:
-#    - desinstala wireshark-common
-#    - instala wireshark-common
 
 - name: Crea el grupo wireshark
   group:
     name: wireshark
     state: present
     system: yes
-
-#- name: Desinstala Wireshark
-#  apt:
-#    state: absent
-#    pkg:
-#    - wireshark
-#  when: not archivo.stat.exists
 
 - name: Instala Wireshark
   apt:
@@ -49,7 +36,9 @@
     cmd: "dpkg-reconfigure wireshark-common"
   environment:
     DEBIAN_FRONTEND: noninteractive
-  when: reconfigure_changed.changed
+  #when: reconfigure_changed.changed
+  # Comentado porque quiero que lo haga en todos los equipos
+  # luego debe hacer sólo cuando se haya reconfigurado.
 
 - name: Crea /opt/wireshark para indicar que wireshark está хорошо
   file:
