@@ -1,0 +1,16 @@
+---
+- hosts: 192.168.244.112
+  user: root
+  strategy: free
+
+  vars:
+    # He tenido que quitar los grupos sambashare,ubridge
+    # Añado tty para que puedan utilizar minicom con un cable
+    # Añado netdev para que puedan seleccionar red wifi
+    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,netdev,plugdev,tty,vboxusers,wireshark
+
+  roles:
+    - wireshark
+
+  tasks:
+    - include_tasks: users/informatica/alumnos/asix2a.yml

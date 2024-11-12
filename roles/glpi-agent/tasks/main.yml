@@ -6,17 +6,18 @@
     owner: root
     group: root
     mode: u=rwx,g=r,o=r
-  notify:
-    - instala glpi-agent
-    - configura glpi-agent
+  register: copy_glpi_agent
+
+- name: instala glpi-agent
+  shell: snap install --classic --dangerous /opt/glpi-agent_1.11_amd64.snap
+  when: copy_glpi_agent.changed
+
+- name: configura glpi-agent
+  shell: snap set glpi-agent server=http://glpi.elpuig.xeill.net/front/inventory.php
+  when: copy_glpi_agent.changed
 
 # Añade el dominio a /etc/hosts para utilizar la VPN
 - name: Añade 10.0.0.5 glpi.elpuig.xeill.net a /etc/hosts
   lineinfile:
     path: /etc/hosts
     line: 10.0.0.5 glpi.elpuig.xeill.net
-
-# Ejecutamos los handlers ahora para que no se pierdan
-# si se interrumple el playbook.
-- name: Flush handlers
-  meta: flush_handlers

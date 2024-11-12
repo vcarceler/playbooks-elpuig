@@ -1,5 +1,0 @@
-- name: instala glpi-agent
-  shell: snap install --classic --dangerous /opt/glpi-agent_1.11_amd64.snap
-
-- name: configura glpi-agent
-  shell: snap set glpi-agent server=http://glpi.elpuig.xeill.net/front/inventory.php
