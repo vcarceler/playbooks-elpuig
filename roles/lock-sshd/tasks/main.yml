@@ -3,5 +3,10 @@
     dest: /etc/ssh/sshd_config
     regexp: '^#PasswordAuthentication yes'
     replace: 'PasswordAuthentication no'
-  notify:
-    - restart ssh
+  register: sshd_config
+
+- name: restart ssh
+  service:
+    name: ssh
+    state: restarted
+  when: sshd_config.changed
