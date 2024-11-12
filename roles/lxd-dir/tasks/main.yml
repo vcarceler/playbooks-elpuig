@@ -2,9 +2,6 @@
   snap:
         name: lxd
   ignore_errors: yes
-  notify:
-    - copy lxd-preseed
-    - config lxd
 
 - name: copy lxd-preseed
   copy:
@@ -13,5 +10,8 @@
     owner: root
     group: root
     mode: u=rw,g=r,o=r
-  notify:
-    - config lxd
+  register: lxd
+
+- name: config lxd
+  shell: cat /root/lxd-preseed.yml | /snap/bin/lxd init --preseed
+  when: lxd.changed
