@@ -1,5 +1,4 @@
 ---
-# Cambia la configuración de unattended-upgrades para que esté activo
 
 - name: Pone el parámetro pnpacpi=off en /etc/default/grub
   replace:
