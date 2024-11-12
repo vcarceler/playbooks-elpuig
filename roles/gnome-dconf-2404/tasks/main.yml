@@ -8,8 +8,7 @@
     block: |
       user-db:user
       system-db:local
-  notify:
-    - dconf update
+  register: profile
 
 # Se pueden ver las claves originales con dconf-editor
 - name: Definición del fondo de pantalla y de salvapantalla
@@ -22,6 +21,8 @@
     block: |
       [org/gnome/shell]
       favorite-apps = ['firefox_firefox.desktop', 'org.gnome.Nautilus.desktop', 'gnome-terminal.desktop']
-  notify:
-    - dconf update
+  register: wallpaper
 
+- name: dconf update
+  command: dconf update
+  when: profile.changed or wallpaper.changed
