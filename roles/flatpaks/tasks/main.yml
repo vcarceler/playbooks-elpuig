@@ -135,7 +135,7 @@
 
 - name: Instala flatpak de freecad
   flatpak:
-          name: https://dl.flathub.org/repo/appstream/org.freecadweb.FreeCAD.flatpakref
+          name: https://dl.flathub.org/repo/appstream/org.freecad.FreeCAD.flatpakref
           state: present
 
 - name: Instala flatpak de fritzing
