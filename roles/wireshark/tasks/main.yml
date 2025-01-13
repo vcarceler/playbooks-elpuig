@@ -36,7 +36,7 @@
     cmd: "dpkg-reconfigure wireshark-common"
   environment:
     DEBIAN_FRONTEND: noninteractive
-  #when: reconfigure_changed.changed
+  when: reconfigure_changed.changed
   # Comentado porque quiero que lo haga en todos los equipos
   # luego debe hacer sólo cuando se haya reconfigurado.
 
