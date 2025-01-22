@@ -700,6 +700,9 @@ dpt-dibuix
 192.168.244.151
 192.168.244.152
 
+[carret19]
+192.168.245.[205:234]
+
 
 # Aulas ESO/BAT con WiFi y cable
 [aulas-esobat]
