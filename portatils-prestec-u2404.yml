@@ -1,0 +1,41 @@
+---
+- hosts: portatils_prestec
+  user: root
+  strategy: free
+
+  vars:
+    # He tenido que quitar los grupos sambashare,ubridge
+    # Añado tty para que puedan utilizar minicom con un cable
+    # Añado netdev para que puedan seleccionar red wifi
+    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,netdev,plugdev,tty,vboxusers
+
+  roles:
+    - delete-users
+    - lock-sshd
+    - swappiness-0
+    - role: vasilisa
+      vars:
+        sirin: "http://192.168.240.18:8080/register/portatils-prestec-u2404.yml"
+    - activate-unattended-upgrades
+    - role: cambia-hostname-wg0
+      vars:
+        base_hostname: "prestec"
+    - timesyncd-ntp
+    - ubuntu-desktop-minimal
+    - software
+    - gnome-dconf-2404
+      #- wireshark
+    - kvm
+    - lxd-dir
+    - glpi-agent
+    - wireguard
+    - nm-unmanage-wg0
+      #- convidat
+
+      # Los Lenovo 300w Yoga Gen 4 no hibernan bien pero pueden suspender.
+    - role: systemd-freeze
+      when: ansible_chassis_version == 'Lenovo 300w Yoga Gen 4'
+
+  tasks:
+    # Usuario personal
+    #- include_tasks: "vpn/{{ ansible_host }}.yml"

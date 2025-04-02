@@ -37,3 +37,9 @@
     #- include_tasks: users/informatica/alumnos/smx2a.yml
     #- include_tasks: users/informatica/alumnos/asix2a.yml
     - include_tasks: users/informatica/alumnos/asix2a.yml
+
+    - name: Instala iperf3
+      apt:
+        update_cache: yes
+        pkg:
+          - iperf3

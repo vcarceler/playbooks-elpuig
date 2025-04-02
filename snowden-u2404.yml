@@ -37,6 +37,12 @@
     - include_tasks: users/informatica/alumnos/smx1d.yml
     - include_tasks: users/informatica/profes-snowden.yml
       when: ansible_default_ipv4.address == "192.168.15.100"
+    - name: Borra usuario test
+      user:
+        name: test
+        state: absent
+        remove: yes
+
     #- include_tasks: users/informatica/alumnos/asix2a.yml
     #- include: users/informatica/smx2a.yml
     #- include: users/informatica/smx2b.yml

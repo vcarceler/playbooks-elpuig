@@ -1,0 +1,20 @@
+---
+- hosts: snowden
+  user: root
+  strategy: free
+
+  vars:
+    # He tenido que quitar los grupos sambashare,ubridge
+    # Añado tty para que puedan utilizar minicom con un cable
+    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty,vboxusers
+
+  tasks:
+    # Usuarios
+    - include_tasks: users/informatica/alumnos/smx2b.yml
+      #- include_tasks: users/informatica/alumnos/test.yml
+    - name: Borra usuario test
+      user:
+        name: test
+        state: absent
+        remove: yes
+

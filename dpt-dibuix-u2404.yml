@@ -1,11 +1,9 @@
 ---
-- hosts: ada
+- hosts: dpt-dibuix
   user: root
   strategy: free
 
   vars:
-    # He tenido que quitar los grupos sambashare,ubridge
-    # Añado tty para que puedan utilizar minicom con un cable
     grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty,vboxusers
 
   roles:
@@ -14,11 +12,11 @@
     - swappiness-0
     - role: vasilisa
       vars:
-        sirin: "http://192.168.12.18:8080/register/ada-u2404.yml"
+        sirin: "http://192.168.17.18:8080/register/dpt-dibuix-u2404.yml"
     - activate-unattended-upgrades
     - role: cambia-hostname
       vars:
-        base_hostname: "ada"
+        base_hostname: "dpt-dibuix"
     - timesyncd-ntp
     - ubuntu-desktop-minimal
     - software
@@ -28,22 +26,13 @@
     - lxd-dir
     - glpi-agent
     - convidat
-    - apagado-1455
+      #- apagado-1455
     - apagado-2130
 
   tasks:
+    #- include_tasks: users/aig/docent.yml
+    #- include_tasks: users/aig/ga.yml
     # Usuarios
-    - include_tasks: users/informatica/alumnos/smx2a.yml
-    - include_tasks: users/informatica/alumnos/daw1.yml
-    - include_tasks: users/informatica/english.yml
-      when: ansible_default_ipv4.address == "192.168.12.100"
-
-    - name: Borra usuario test
-      user:
-        name: test
-        state: absent
-        remove: yes
-
     #- include: users/informatica/smx2a.yml
     #- include: users/informatica/smx2b.yml
     #- include: users/informatica/smx2c.yml
