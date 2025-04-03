@@ -17,7 +17,7 @@
       vars:
         sirin: "http://192.168.240.18:8080/register/portatils-prestec-u2404.yml"
     - activate-unattended-upgrades
-    - role: cambia-hostname-wg0
+    - role: cambia-hostname
       vars:
         base_hostname: "prestec"
     - timesyncd-ntp
@@ -30,7 +30,7 @@
     - glpi-agent
     - wireguard
     - nm-unmanage-wg0
-      #- convidat
+    - convidat
 
       # Los Lenovo 300w Yoga Gen 4 no hibernan bien pero pueden suspender.
     - role: systemd-freeze
