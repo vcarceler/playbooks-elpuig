@@ -73,6 +73,7 @@
     - ripgrep
     - ruby
     - ruby-bundler
+    - sshfs
     - texlive-lang-spanish
     - tree
     - tshark
