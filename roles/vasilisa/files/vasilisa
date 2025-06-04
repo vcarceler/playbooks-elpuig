@@ -215,6 +215,16 @@ fi
 #fi
 
 #
+# Borramos trabajos de impresión colgados
+#
+if [ -f /usr/bin/cancel ]
+then
+	log "Borramos trabajos de impresión colgados"
+	cancel -a
+	log "Borrados"
+fi
+
+#
 # Sirin. https://github.com/vcarceler/sirin
 #
 SIRIN='/opt/sirin'

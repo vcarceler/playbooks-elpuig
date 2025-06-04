@@ -1,0 +1,10 @@
+---
+- hosts: stallman
+  user: root
+
+  tasks:
+
+    - name: Instala flatpak de blender
+      flatpak:
+        name: https://dl.flathub.org/repo/appstream/com.rustdesk.RustDesk.flatpakref
+        state: present

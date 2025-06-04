@@ -1,0 +1,8 @@
+---
+- hosts: torvalds
+  user: root
+
+  tasks:
+    - name: Descarga un fichero grande para comprobar el rendimiento
+      #shell: wget -O /dev/null http://192.168.0.251/datos
+      shell: wget -O /dev/null --no-check-certificate https://192.168.0.251/datos
