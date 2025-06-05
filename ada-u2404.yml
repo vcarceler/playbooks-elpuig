@@ -38,11 +38,17 @@
     - include_tasks: users/informatica/english.yml
       when: ansible_default_ipv4.address == "192.168.12.100"
 
-    - name: Borra usuario test
+    - name: Borra usuarios
       user:
-        name: test
+        name: "{{ item }}"
         state: absent
         remove: yes
+      loop:
+        - asix2a
+        - uf1
+        - uf2
+        - uf3
+        #- uf4
 
     #- include: users/informatica/smx2a.yml
     #- include: users/informatica/smx2b.yml

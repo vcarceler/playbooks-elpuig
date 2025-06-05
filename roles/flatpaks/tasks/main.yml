@@ -320,6 +320,12 @@
           name: https://dl.flathub.org/repo/appstream/org.remmina.Remmina.flatpakref
           state: present
 
+- name: Instala flatpak de rustdesk
+  flatpak:
+          name: https://dl.flathub.org/repo/appstream/com.rustdesk.RustDesk.flatpakref
+          state: present
+
+
 - name: Instala flatpak de scratch
   flatpak:
           name: https://dl.flathub.org/repo/appstream/edu.mit.Scratch.flatpakref
