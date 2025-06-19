@@ -28,10 +28,10 @@
   snap:
         name: beekeeper-studio
 
-- name: Instala snap bitwarden
-  snap:
-    name: bitwarden
-  when: ansible_distribution_version == "24.04"
+#- name: Instala snap bitwarden
+#  snap:
+#    name: bitwarden
+#  when: ansible_distribution_version == "24.04"
 
 #- name: Instala snap code
 #  snap:
