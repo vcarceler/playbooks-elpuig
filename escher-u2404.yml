@@ -34,6 +34,14 @@
   tasks:
     # Usuarios
     - include_tasks: users/dibuix/dibuix.yml
-    - include_tasks: users/informatica/alumnos/smx1c.yml
+    - include_tasks: users/informatica/alumnos/daw2a.yml
     - include_tasks: users/informatica/profes-escher.yml
       when: ansible_default_ipv4.address == "192.168.28.100"
+
+    - name: Borrado de usuarios antiguos
+      user:
+              name: "{{ item }}"
+              state: absent
+              remove: yes
+      with_items:
+              - smx1c

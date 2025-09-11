@@ -34,9 +34,17 @@
   tasks:
     # Usuarios
     - include_tasks: users/informatica/alumnos/smx2a.yml
-    - include_tasks: users/informatica/alumnos/daw1.yml
+    - include_tasks: users/informatica/alumnos/smx1c.yml
     - include_tasks: users/informatica/english.yml
       when: ansible_default_ipv4.address == "192.168.12.100"
+
+    - name: Borrado de usuarios antiguos
+      user:
+              name: "{{ item }}"
+              state: absent
+              remove: yes
+      with_items:
+              - daw1
 
     #- name: Borra usuarios
     #  user:
