@@ -659,8 +659,15 @@ dpt-dibuix
 192.168.245.0
 
 # ThinkPad P1 Gen 5 i7 32GB
-[carret16]
-192.168.244.[201:230]
+#[carret16]
+#192.168.244.[201:230]
+
+# Portátiles ThinkPad P1 Gen 5 i7 32GB para DAW1
+[daw1]
+192.168.244.[201:225]
+
+[dev]
+192.168.244.[226:230]
 
 # ThinkBook 14 G2 ITL (como los de profe)
 [carret17]
