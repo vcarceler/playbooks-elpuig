@@ -1,5 +1,5 @@
 ---
-- hosts: snowden
+- hosts: daw1
   user: root
   gather_facts: false
 

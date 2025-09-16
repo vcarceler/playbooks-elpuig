@@ -1,5 +1,5 @@
 ---
-- hosts: stallman
+- hosts: smx2d
   user: root
   strategy: free
 
@@ -9,16 +9,16 @@
     grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty,vboxusers
 
   roles:
-    #- delete-users
+    - delete-users
     - lock-sshd
     - swappiness-0
     - role: vasilisa
       vars:
-        sirin: "http://192.168.11.18:8080/register/stallman-u2404.yml"
+        sirin: "http://192.168.240.18:8080/register/smx2d-u2404.yml"
     - activate-unattended-upgrades
     - role: cambia-hostname
       vars:
-        base_hostname: "stallman"
+        base_hostname: "smx2d"
     - timesyncd-ntp
     - ubuntu-desktop-minimal
     - software
@@ -28,17 +28,19 @@
     - lxd-dir
     - glpi-agent
     - convidat
-    - apagado-1455
-    - apagado-2130
+    #- apagado-1455
+    #- apagado-2130
 
   tasks:
     # Usuarios
-    - include_tasks: users/informatica/alumnos/smx1b.yml
-    - include_tasks: users/informatica/alumnos/asix1.yml
-    - include_tasks: users/informatica/english.yml
-      when: ansible_default_ipv4.address == "192.168.11.100"
+    - include_tasks: users/informatica/alumnos/smx2d.yml
+    #- include_tasks: users/informatica/alumnos/asix2a.yml
+    #- include_tasks: users/informatica/alumnos/asix1.yml
+    
     - name: Borrado de usuarios antiguos
       user:
-              name: daw2
+              name: "{{ item }}"
               state: absent
               remove: yes
+      with_items:
+              - asix2a
