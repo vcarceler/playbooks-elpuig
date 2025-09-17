@@ -1,5 +1,5 @@
 ---
-- hosts: daw1
+- hosts: smx2d
   user: root
   gather_facts: false
 

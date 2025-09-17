@@ -47,8 +47,8 @@
 # Grupos para nuestras VLANs #
 #                            #
 ##############################
-[ampa]
-192.168.241.7
+#[ampa]
+#192.168.241.7
 
 [asix2a]
 192.168.240.176
@@ -235,7 +235,7 @@
 
 [aif]
 192.168.14.[100:124]
-192.168.14.[150:159]
+192.168.14.[150:165]
 
 # Usuario ga para el profesor de gestió administrativa
 [ga]
@@ -685,10 +685,12 @@ dpt-dibuix
 #192.168.245.[205:234]
 
 # Portátiles para smx2c
-[192.168.245.[205:218]
+[smx2c]
+192.168.245.[205:220]
 
 #Portátiles para smx2d
-[192.168.245.[219:234]
+[smx2d]
+192.168.245.[221:234]
 
 
 # Aulas ESO/BAT con WiFi y cable
