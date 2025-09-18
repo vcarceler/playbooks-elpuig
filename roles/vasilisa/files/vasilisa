@@ -33,6 +33,12 @@ log "There is something to do?"
 #
 #journalctl -b | grep "watchdog: BUG: soft lockup - CPU#" >/dev/null && init 6
 
+#
+# Mitiga el problema de VirtualBox con KVM
+#
+modprobe -r kvm_intel
+modprobe -r kvm_amd
+
 
 #
 # Libera espacio borrando los directorios de descargas y las papeleras.

@@ -35,9 +35,13 @@
     # Usuarios
     - include_tasks: users/aig/alumnos/ga1a.yml
     - include_tasks: users/aig/alumnos/ga1b.yml
-    - include_tasks: users/aig/alumnos/ga2.yml
-    - include_tasks: users/aig/alumnos/af1.yml
-    - include_tasks: users/aig/alumnos/af2.yml
+    - include_tasks: users/aig/alumnos/ga1c.yml
+    - include_tasks: users/aig/alumnos/ga1d.yml
+      #- include_tasks: users/aig/alumnos/ga2.yml
+    - include_tasks: users/aig/alumnos/af1a.yml
+    - include_tasks: users/aig/alumnos/af1b.yml
+      #- include_tasks: users/aig/alumnos/af2.yml
+    - include_tasks: users/aig/alumnos/ad1.yml
     - include_tasks: users/aig/docent.yml
       when: ansible_default_ipv4.address == "192.168.14.100"
     - include_tasks: users/idiomes/tgrabovs.yml
