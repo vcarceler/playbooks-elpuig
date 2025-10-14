@@ -38,13 +38,13 @@
     #- include_tasks: users/informatica/english.yml
     #  when: ansible_default_ipv4.address == "192.168.12.100"
 
-    #- name: Borrado de usuarios antiguos
-    #  user:
-    #          name: "{{ item }}"
-    #          state: absent
-    #          remove: yes
-    #  with_items:
-    #          - daw1
+    - name: Borrado de usuarios antiguos
+      user:
+              name: "{{ item }}"
+              state: absent
+              remove: yes
+      with_items:
+              - asix2a
 
     #- name: Borra usuarios
     #  user:
