@@ -1,0 +1,28 @@
+---
+- hosts: stallman
+  user: root
+  strategy: free
+
+  vars:
+    # He tenido que quitar los grupos sambashare,ubridge
+    # Añado tty para que puedan utilizar minicom con un cable
+    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty,vboxusers
+
+  tasks:
+    # Usuarios
+    #- include_tasks: users/informatica/dcolomer.yml
+    #- include_tasks: users/informatica/alumnos/dam1.yml
+    #- include_tasks: users/informatica/english.yml
+    #  when: ansible_default_ipv4.address == "192.168.12.100"
+
+    - name: Borrado de usuarios antiguos
+      user:
+              name: "{{ item }}"
+              state: absent
+              remove: yes
+      with_items:
+              - asix1
+              - smx1b
+
+    - include_tasks: users/informatica/alumnos/asix1.yml
+    - include_tasks: users/informatica/alumnos/smx1b.yml

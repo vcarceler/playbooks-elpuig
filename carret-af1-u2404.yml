@@ -1,5 +1,5 @@
 ---
-- hosts: chomsky
+- hosts: carret-af1
   user: root
   strategy: free
 
@@ -14,38 +14,28 @@
     - swappiness-0
     - role: vasilisa
       vars:
-        sirin: "http://192.168.23.18:8080/register/chomsky-u2404.yml"
+        sirin: "http://192.168.240.18:8080/register/af1-u2404.yml"
     - activate-unattended-upgrades
     - role: cambia-hostname
       vars:
-        base_hostname: "chomsky"
+        base_hostname: "af1"
     - timesyncd-ntp
     - ubuntu-desktop-minimal
     - software
     - gnome-dconf-2404
-    - wireshark
+    #- wireshark
     - kvm
     - lxd-dir
     - glpi-agent
     - convidat
-    - apagado-1455
-    - apagado-2130
+    #- apagado-1455
+    #- apagado-2130
 
   tasks:
     # Usuarios
     #- include_tasks: users/informatica/alumnos/smx2a.yml
     #- include_tasks: users/informatica/alumnos/asix2a.yml
-    - include_tasks: users/informatica/alumnos/dam2a.yml
-    - include_tasks: users/informatica/dcolomer.yml
-      when: ansible_default_ipv4.address == "192.168.23.100"
-    - include_tasks: users/informatica/daniel.martinez.yml
-      when: ansible_default_ipv4.address == "192.168.23.100"
-    - include_tasks: users/informatica/jherna76.yml
-      when: ansible_default_ipv4.address == "192.168.23.100"
-    #- include_tasks: users/informatica/llorent4.yml
-    #  when: ansible_default_ipv4.address == "192.168.23.100"
-    #- include_tasks: users/informatica/luis.yml
-    #  when: ansible_default_ipv4.address == "192.168.23.100"
+    #- include_tasks: users/informatica/alumnos/dev.yml
 
     - name: Borrado de usuarios antiguos
       user:
@@ -53,5 +43,4 @@
               state: absent
               remove: yes
       with_items:
-              - smx2d
-
+              - asix1
