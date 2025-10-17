@@ -1,0 +1,63 @@
+---
+- hosts: carret-acollida
+  user: root
+  strategy: free
+
+  vars:
+    # He tenido que quitar los grupos sambashare,ubridge
+    # Añado tty para que puedan utilizar minicom con un cable
+    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty,vboxusers
+
+  roles:
+    - delete-users
+    - lock-sshd
+    - swappiness-0
+    - role: vasilisa
+      vars:
+        sirin: "http://192.168.12.18:8080/register/carret-acollida-u2404.yml"
+    - activate-unattended-upgrades
+    - role: cambia-hostname
+      vars:
+        base_hostname: "carret-acollida"
+    - timesyncd-ntp
+    - ubuntu-desktop-minimal
+    - software
+    - gnome-dconf-2404
+      #- wireshark
+    - kvm
+    - lxd-dir
+    - glpi-agent
+    - convidat
+    - apagado-1455
+    - apagado-2130
+
+  tasks:
+    # Usuarios
+    #- include_tasks: users/informatica/alumnos/smx2a.yml
+    #- include_tasks: users/informatica/alumnos/smx1c.yml
+    #- include_tasks: users/informatica/english.yml
+    #  when: ansible_default_ipv4.address == "192.168.12.100"
+
+    - name: Borrado de usuarios antiguos
+      user:
+              name: "{{ item }}"
+              state: absent
+              remove: yes
+      with_items:
+              - asix2a
+
+    #- name: Borra usuarios
+    #  user:
+    #    name: "{{ item }}"
+    #    state: absent
+    #    remove: yes
+    #  loop:
+    #    - asix2a
+    #    - uf1
+    #    - uf2
+    #    - uf3
+    #    - uf4
+
+    #- include: users/informatica/smx2a.yml
+    #- include: users/informatica/smx2b.yml
+    #- include: users/informatica/smx2c.yml
