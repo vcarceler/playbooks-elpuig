@@ -14,7 +14,7 @@
     - swappiness-0
     - role: vasilisa
       vars:
-        sirin: "http://192.168.12.18:8080/register/carret-elpuig-u2404.yml"
+        sirin: "http://192.168.240.18:8080/register/carret-elpuig-u2404.yml"
     - activate-unattended-upgrades
     - role: cambia-hostname
       vars:

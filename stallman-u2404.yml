@@ -9,7 +9,7 @@
     grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty,vboxusers
 
   roles:
-    #- delete-users
+    - delete-users
     - lock-sshd
     - swappiness-0
     - role: vasilisa
