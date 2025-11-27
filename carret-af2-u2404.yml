@@ -18,7 +18,7 @@
     - activate-unattended-upgrades
     - role: cambia-hostname
       vars:
-        base_hostname: "carretaf2"
+        base_hostname: "carret-af2"
     - timesyncd-ntp
     - ubuntu-desktop-minimal
     - software
