@@ -37,5 +37,6 @@
       when: ansible_chassis_version == 'Lenovo 300w Yoga Gen 4'
 
   tasks:
+    - include_tasks: users/esobat/docent.yml
     # Usuario personal
     #- include_tasks: "vpn/{{ ansible_host }}.yml"
