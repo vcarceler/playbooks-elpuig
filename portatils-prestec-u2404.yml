@@ -25,7 +25,7 @@
     - software
     - gnome-dconf-2404
       #- wireshark
-    - kvm
+      #- kvm
     - lxd-dir
     - glpi-agent
     - wireguard
@@ -38,5 +38,7 @@
 
   tasks:
     - include_tasks: users/esobat/docent.yml
+    - include_tasks: users/informatica/ester.banyoles.v.yml
+      when: ansible_default_ipv4.address == "192.168.244.155" 
     # Usuario personal
     #- include_tasks: "vpn/{{ ansible_host }}.yml"

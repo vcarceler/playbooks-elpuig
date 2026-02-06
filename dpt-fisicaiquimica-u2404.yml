@@ -1,0 +1,36 @@
+---
+- hosts: dpt_fisicaiquimica
+  user: root
+  strategy: free
+
+  vars:
+    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,vboxusers
+
+  roles:
+    - delete-users
+    - lock-sshd
+    - swappiness-0
+    - role: vasilisa
+      vars:
+        sirin: "http://192.168.17.18:8080/register/dpt-fisicaiquimica-u2404.yml"
+    - activate-unattended-upgrades
+    - role: cambia-hostname
+      vars:
+        base_hostname: "dpt-fisicaiquimica"
+    - timesyncd-ntp
+    - ubuntu-desktop-minimal
+    - software
+    - gnome-dconf-2404
+    - wireshark
+    - kvm
+    - lxd-dir
+    - glpi-agent
+    - convidat
+      #- apagado-1455
+    - apagado-2130
+
+  tasks:
+    # Usuarios
+    - include_tasks: users/fisicaiquimica/ajusto4.yml
+    - include_tasks: users/fisicaiquimica/giselagarcia.yml
+    - include_tasks: users/fisicaiquimica/sterol.yml

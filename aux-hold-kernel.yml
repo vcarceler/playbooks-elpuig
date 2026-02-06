@@ -1,0 +1,25 @@
+---
+- hosts: stallman
+  user: root
+  strategy: free
+
+  tasks:
+    - name: Remove the specific broken kernel packages
+      ansible.builtin.apt:
+        pkg:
+          - linux-image-6.17.0-14-generic
+          - linux-headers-6.17.0-14-generic
+          - linux-modules-6.17.0-14-generic
+        state: absent
+        purge: yes
+
+    - name: Hold the working kernel to prevent accidental removal
+      ansible.builtin.dpkg_selections:
+        name: "{{ item }}"
+        selection: hold
+      loop:
+        - linux-image-6.14.0-37-generic
+        - linux-headers-6.14.0-37-generic
+
+    - name: Update GRUB (just in case)
+      ansible.builtin.command: update-grub
