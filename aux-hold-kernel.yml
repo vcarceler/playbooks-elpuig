@@ -1,7 +1,8 @@
 ---
-- hosts: stallman
+- hosts: 192.168.23.100
   user: root
   strategy: free
+  gather_facts: false
 
   tasks:
     - name: Remove the specific broken kernel packages
@@ -12,6 +13,12 @@
           - linux-modules-6.17.0-14-generic
         state: absent
         purge: yes
+
+    - name: Instala linux-image-6.14.0-37-generic
+      ansible.builtin.apt:
+        pkg:
+          - linux-image-6.14.0-37-generic
+        state: present
 
     - name: Hold the working kernel to prevent accidental removal
       ansible.builtin.dpkg_selections:
