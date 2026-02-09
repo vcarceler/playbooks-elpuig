@@ -1,5 +1,5 @@
 ---
-- hosts: 192.168.23.100
+- hosts: aif
   user: root
   strategy: free
   gather_facts: false

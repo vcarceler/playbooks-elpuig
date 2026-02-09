@@ -83,7 +83,7 @@
       #- vagrant
     - vim
     - virt-top
-      #- virtualbox
+    - virtualbox
     - virtualenv
     - vpcs
       #- wcatalan
