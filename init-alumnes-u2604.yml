@@ -1,0 +1,46 @@
+---
+- hosts: init_portatils_alumnes
+  user: root
+  strategy: free
+
+  vars:
+    grupos: adm,cdrom,dialout,lpadmin,plugdev
+
+  roles:
+    - delete-users
+    - lock-sshd
+    - swappiness-0
+
+    - role: vasilisa
+      vars:
+        sirin: "http://10.0.0.2:8080/register/portatils-alumnes-u2604.yml"
+
+    - activate-unattended-upgrades
+
+    - role: cambia-hostname
+      vars:
+        base_hostname: "alumne"
+      
+    - glpi-agent
+
+    - nm-unmanage-wg0
+      
+    - flush-handlers
+
+  tasks:
+    - name: Instala wireguard-tools
+      apt:
+        name: wireguard-tools
+        state: present
+
+    - include_tasks: "vpn/{{ vpn }}.yml"
+
+    - name: Activa la VPN wg0 (enable y start)
+      systemd:
+        name: wg-quick@wg0
+        enabled: yes
+        state: started
+        daemon_reload: yes
+
+    - name: Reboot
+      reboot:

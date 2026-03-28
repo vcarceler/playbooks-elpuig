@@ -31,15 +31,15 @@ log "There is something to do?"
 #
 # Mitiga el problema con vmlinuz-6.17.0-14-generic
 #
-if [ -f /boot/vmlinuz-6.17.0-14-generic ]
-then
-	log "Detectado kernel vmlinuz-6.17.0-14-generic."
-	apt-get -y purge linux-image-6.17.0-14-generic linux-headers-6.17.0-14-generic linux-modules-6.17.0-14-generic linux-modules-extra-6.17.0-14-generic
-	apt update
-	apt install -y linux-image-6.14.0-37-generic linux-headers-6.14.0-37-generic linux-modules-extra-6.14.0-37-generic
-	apt-mark hold linux-image-6.14.0-37-generic linux-headers-6.14.0-37-generic linux-modules-extra-6.14.0-37-generic
-	update-grub
-fi
+#if [ -f /boot/vmlinuz-6.17.0-14-generic ]
+#then
+#	log "Detectado kernel vmlinuz-6.17.0-14-generic."
+#	apt-get -y purge linux-image-6.17.0-14-generic linux-headers-6.17.0-14-generic linux-modules-6.17.0-14-generic linux-modules-extra-6.17.0-14-generic
+#	apt update
+#	apt install -y linux-image-6.14.0-37-generic linux-headers-6.14.0-37-generic linux-modules-extra-6.14.0-37-generic
+#	apt-mark hold linux-image-6.14.0-37-generic linux-headers-6.14.0-37-generic linux-modules-extra-6.14.0-37-generic
+#	update-grub
+#fi
 
 #
 # Mitiga el problema en el arranque de los Lenovo 300e 2nd Gen

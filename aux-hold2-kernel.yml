@@ -1,0 +1,36 @@
+---
+- hosts: 192.168.23.100
+  user: root
+  strategy: free
+  gather_facts: false
+  
+  vars:
+    old_kernel_version: "6.14.0-37-generic"
+
+  tasks:
+    - name: Quitar la retención (unhold) del kernel actual
+      ansible.builtin.dpkg_selections:
+        name: "{{ item }}"
+        selection: install
+      loop:
+        - "linux-image-{{ old_kernel_version }}"
+        - "linux-headers-{{ old_kernel_version }}"
+
+    - name: Instalar el metapaquete del kernel GA
+      ansible.builtin.apt:
+        name:
+          - linux-image-generic
+          - linux-headers-generic
+        state: present
+        update_cache: yes
+
+    - name: Eliminar la versión específica del kernel
+      ansible.builtin.apt:
+        name:
+          - "linux-image-{{ old_kernel_version }}"
+          - "linux-headers-{{ old_kernel_version }}"
+        state: absent
+        purge: yes
+
+    - name: Actualizar el cargador de arranque (GRUB)
+      ansible.builtin.command: update-grub

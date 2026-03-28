@@ -6,7 +6,7 @@
   vars:
     # He tenido que quitar los grupos sambashare,ubridge
     # Añado tty para que puedan utilizar minicom con un cable
-    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty,vboxusers
+    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty
 
   roles:
     - delete-users
@@ -46,8 +46,8 @@
       when: ansible_default_ipv4.address == "192.168.23.100"
     #- include_tasks: users/informatica/llorent4.yml
     #  when: ansible_default_ipv4.address == "192.168.23.100"
-    #- include_tasks: users/informatica/luis.yml
-    #  when: ansible_default_ipv4.address == "192.168.23.100"
+    - include_tasks: users/informatica/luis.yml
+      when: ansible_default_ipv4.address == "192.168.23.100"
 
     - name: Borrado de usuarios antiguos
       user:

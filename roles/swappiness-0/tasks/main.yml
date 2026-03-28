@@ -1,8 +1,20 @@
-- name: Añade vm.swappiness = 0 en /etc/sysctl.conf
-  blockinfile:
-          dest: /etc/sysctl.conf
-          block: |
-            #
-            # No queremos utilizar swap si no es necesario.
-            #
-            vm.swappiness = 0
+- name: Configurar vm.swappiness a 0 en /etc/sysctl.d/
+  ansible.builtin.copy:
+    dest: /etc/sysctl.d/99-swappiness.conf
+    content: |
+      #
+      # No queremos utilizar swap si no es necesario.
+      #
+      vm.swappiness = 0
+    owner: root
+    group: root
+    mode: '0644'
+
+#- name: Añade vm.swappiness = 0 en /etc/sysctl.conf
+#  blockinfile:
+#          dest: /etc/sysctl.conf
+#          block: |
+#            #
+#            # No queremos utilizar swap si no es necesario.
+#            #
+#            vm.swappiness = 0

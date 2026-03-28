@@ -55,6 +55,10 @@
     name: paquetes-ubuntu-2404
   when: ansible_distribution_version == "24.04"
 
+- name: Gestiona paquetes en Ubuntu 26.04
+  include_role:
+    name: paquetes-ubuntu-2604
+  when: ansible_distribution_version == "26.04"
 
 - name: Gestiona paquetes en Fedora
   include_role:

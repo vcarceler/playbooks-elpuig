@@ -1,5 +1,5 @@
 ---
-- hosts: snowden
+- hosts: aif
   user: root
   gather_facts: false
 
