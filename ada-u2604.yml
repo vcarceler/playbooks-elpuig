@@ -19,15 +19,15 @@
     - role: cambia-hostname
       vars:
         base_hostname: "ada"
-    - timesyncd-ntp
+          #- chrony-sources
     - ubuntu-desktop-minimal
     - software
-    - gnome-dconf-2404
+      #- gnome-dconf-2404
     - wireshark
     - kvm
     - lxd-dir
     - glpi-agent
-    - convidat
+    - convidat-pam
     - apagado-1455
     - apagado-2130
 

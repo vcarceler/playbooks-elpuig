@@ -29,6 +29,7 @@
 - name: Edición de /etc/gdm3/PostSession/Default
   blockinfile:
     dest: /etc/gdm3/PostSession/Default
+    create: yes
     owner: root
     group: root
     mode: 755
