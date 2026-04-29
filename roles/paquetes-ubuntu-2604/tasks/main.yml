@@ -2,24 +2,6 @@
 # Gestiona los paquetes en Ubuntu
 #
 
-#- name: Desinstala paquetes deprecated de Ubuntu
-#  apt:
-#    state: absent
-#    autoremove: yes
-#    pkg:
-#      - filezilla
-#      - freecad
-#      - fritzing
-#      - kicad
-#      - korganizer
-#      - openscad
-#      - openshot
-#      - recordmydesktop
-#      - scratch
-#      - slic3r
-#      - transmission-gtk
-#      - virtualbox-6.1
-
 # Instalación de paquetes
 - name: Instalación de paquetes que están en los repos de Ubuntu
   apt:
@@ -34,21 +16,11 @@
     - docutils-doc
     - git
     - gnome-boxes
-      #- gnome-user-docs-ca
-      #- golang-go
     - htop
     - httpie
-      #- hunspell-ca
     - ipcalc
     - jq
-      #- julia
-      #- language-pack-ca
-      #- language-pack-ca-base
-      #- language-pack-gnome-ca
-      #- language-pack-gnome-ca-base
     - librecad
-      #- libreoffice-base
-      #- libreoffice-report-builder
     - lldpd
     - lyx
     - net-tools
@@ -60,15 +32,11 @@
     - postgresql-client
     - prometheus-node-exporter
     - pylint
-      #- pylint3    
     - python3-docutils
     - python3-easygui
     - python3-pip
-      #- python3-pylint-django
-      #- python3-pypdf2
     - python3-venv
     - relational
-      #- renpy
     - rst2pdf
     - ripgrep
     - ruby
@@ -78,26 +46,24 @@
     - tree
     - tshark
     - ttf-mscorefonts-installer
-      #- ubuntu-desktop-minimal
     - unrar
-      #- vagrant
     - vim
     - virt-top
+    - virt-viewer
     - virtualbox
     - virtualenv
     - vpcs
-      #- wcatalan
     - xorriso
 
-- name: Instala drivers de nvidia en Lenovo ThinkCentre M90t Gen 3
-  apt:
-    pkg:
-      # Atención: Instalar nvidia-driver-525-open rompe el arranque.
-      - nvidia-driver-525
-  when:
-    # Utilizamos las dos propiedades para asegurarnos de que se trata de los equipos con nvidia
-    - ansible_product_name == "11TUS02Q00"
-    - ansible_product_version == "ThinkCentre M90t Gen 3" 
+#- name: Instala drivers de nvidia en Lenovo ThinkCentre M90t Gen 3
+#  apt:
+#    pkg:
+#      # Atención: Instalar nvidia-driver-525-open rompe el arranque.
+#      - nvidia-driver-525
+#  when:
+#    # Utilizamos las dos propiedades para asegurarnos de que se trata de los equipos con nvidia
+#    - ansible_product_name == "11TUS02Q00"
+#    - ansible_product_version == "ThinkCentre M90t Gen 3" 
 
 - name: Elimina paquetes innecesarios con apt autoremove
   apt:

@@ -1,5 +1,5 @@
 ---
-- hosts: aif
+- hosts: torvalds
   user: root
   gather_facts: false
 

@@ -217,7 +217,7 @@
 192.168.243.223
 
 [init-docents]
-192.168.17.101 vpn=10.0.0.180
+192.168.17.105 vpn=10.0.0.139
 #192.168.17.108 vpn=10.0.0.155
 #192.168.17.102 vpn=10.0.0.176
 #192.168.252.236 vpn=10.0.0.142
@@ -227,7 +227,6 @@
 
 [torvalds]
 192.168.10.[100:123]
-192.168.10.198
 
 [torvalds-alumnos]
 192.168.10.[101:123]
@@ -814,6 +813,7 @@ dpt-dibuix
 # Portátiles para los docentes
 #
 [portatils_docents]
+10.0.0.139
 10.0.0.[141:180]
 
 [portatils-tecno]
@@ -935,7 +935,7 @@ dpt-dibuix
 # MAC registradas en Kea
 [init_portatils_alumnes_u2404]
 192.168.245.1 vpn=10.0.3.120
-192.168.243.5 vpn=10.0.0.138
+#192.168.243.5 vpn=10.0.0.138
 # Dos de Jaime
 192.168.242.197 vpn=10.0.1.219
 192.168.243.121 vpn=10.0.1.250
@@ -944,6 +944,7 @@ dpt-dibuix
 # Pasa a ser [init_portatils_alumnes]
 # Incluye los 204 Lenovo Yoga 4
 [init_portatils_alumnes]
+192.168.243.5 vpn=10.0.0.138 # Portátil vcarceler para testeo wifi
 192.168.242.132 vpn=10.0.1.130
 192.168.242.133 vpn=10.0.1.131
 192.168.242.1 vpn=10.0.2.237
