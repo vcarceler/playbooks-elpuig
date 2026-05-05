@@ -1,0 +1,9 @@
+---
+- hosts: torvalds
+  user: root
+
+  tasks:
+
+    - name: Instala virt-viewer
+      apt:
+        name: virt-viewer

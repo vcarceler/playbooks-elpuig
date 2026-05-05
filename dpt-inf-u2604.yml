@@ -1,0 +1,45 @@
+---
+- hosts: dpt_inf
+  user: root
+  strategy: free
+
+  vars:
+    # He tenido que quitar los grupos sambashare,ubridge
+    # Añado tty para que puedan utilizar minicom con un cable
+    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty,vboxusers
+
+  roles:
+    - delete-users
+    - lock-sshd
+    - swappiness-0
+    - role: vasilisa
+      vars:
+        sirin: "http://192.168.12.18:8080/register/dpt-inf-u2604.yml"
+    - activate-unattended-upgrades
+    - role: cambia-hostname
+      vars:
+        base_hostname: "dpt-inf"
+          #- chrony-sources
+    - ubuntu-desktop-minimal
+    - software
+      #- gnome-dconf-2404
+    - wireshark
+    - kvm
+    - lxd-dir
+    - glpi-agent
+    - convidat-pam
+    - apagado-2130
+
+  tasks:
+    # Usuarios
+    #- include_tasks: users/informatica/alumnos/smx1a.yml
+    #- include_tasks: users/informatica/alumnos/dam1.yml
+
+    - name: Borrado de usuarios antiguos
+      user:
+              name: "{{ item }}"
+              state: absent
+              remove: yes
+      with_items:
+              - daw1
+
