@@ -1,5 +1,5 @@
 - name: Apaga las máquinas a las 14:55
-  action: cron name="apagado 14:55" minute="55" hour="14" job="/sbin/init 0"
+  action: cron name="apagado 14:55" minute="55" hour="14" job="/usr/bin/systemctl poweroff"
 
 - name: Copia /usr/lib/systemd/user/notifica-apagado-1455.timer
   copy:
