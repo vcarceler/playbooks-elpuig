@@ -43,3 +43,5 @@
       with_items:
               - daw1
 
+# Playbook para dar de alta todos los profes
+- import_playbook: users/informatica/profesinf-users-u2604.yml
