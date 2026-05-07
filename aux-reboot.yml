@@ -1,5 +1,5 @@
 ---
-- hosts: torvalds
+- hosts: aula305
   user: root
   gather_facts: false
 

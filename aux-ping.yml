@@ -1,5 +1,5 @@
 ---
-- hosts: smx2d
+- hosts: aula305
   user: root
 
   tasks:
