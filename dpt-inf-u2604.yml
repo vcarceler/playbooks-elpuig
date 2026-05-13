@@ -28,6 +28,7 @@
     - lxd-dir
     - glpi-agent
     - convidat-pam
+    - authd
     - apagado-2130
 
   tasks:
