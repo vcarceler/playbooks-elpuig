@@ -14,7 +14,7 @@
     - swappiness-0
     - role: vasilisa
       vars:
-        sirin: "http://192.168.12.18:8080/register/aula305-u2604.yml"
+        sirin: "http://192.168.27.18:8080/register/aula305-u2604.yml"
     - activate-unattended-upgrades
     - role: cambia-hostname
       vars:
@@ -33,7 +33,7 @@
 
   tasks:
     # Usuarios
-    - import_tasks: users/aig/alumnos/sa1.yml
+    #- import_tasks: users/aig/alumnos/sa1.yml
     #- import_tasks: users/informatica/english.yml
     #  when: ansible_default_ipv4.address == "192.168.12.100"
 

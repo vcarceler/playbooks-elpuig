@@ -1,5 +1,5 @@
 ---
-- hosts: aula305
+- hosts: ada
   user: root
 
   tasks:

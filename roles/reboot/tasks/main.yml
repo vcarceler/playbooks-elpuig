@@ -3,4 +3,5 @@
 
 - name: reboot
   reboot:
+    reboot_command: "systemctl reboot -i"
     reboot_timeout: 60

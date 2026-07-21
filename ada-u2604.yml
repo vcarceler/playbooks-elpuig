@@ -1,5 +1,5 @@
 ---
-- hosts: test_u2604
+- hosts: ada
   user: root
   strategy: free
 
