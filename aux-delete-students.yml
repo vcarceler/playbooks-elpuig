@@ -1,5 +1,5 @@
 ---
-- hosts: saladeprofessors
+- hosts: torvalds
   user: root
 
   tasks:
@@ -9,4 +9,4 @@
                     state: absent
                     remove: true
             loop:
-                    - tecnics
+                    - smx1a

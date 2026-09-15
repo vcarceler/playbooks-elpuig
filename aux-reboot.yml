@@ -1,5 +1,5 @@
 ---
-- hosts: aula305
+- hosts: portatils_dev
   user: root
   gather_facts: false
 
