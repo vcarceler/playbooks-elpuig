@@ -1,0 +1,21 @@
+---
+- hosts: torvalds
+  user: root
+  strategy: free
+
+  vars:
+    # He tenido que quitar los grupos sambashare,ubridge
+    # Añado tty para que puedan utilizar minicom con un cable
+    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty,vboxusers
+
+  tasks:
+    - name: Borrado de usuarios antiguos
+      user:
+              name: "{{ item }}"
+              state: absent
+              remove: yes
+      with_items:
+              - smx1a
+    # Usuarios
+    - include_tasks: users/informatica/alumnos/smx1a.yml
+
