@@ -1,5 +1,5 @@
 ---
-- hosts: stallman
+- hosts: tesla
   user: root
   strategy: free
 
@@ -14,11 +14,11 @@
     - swappiness-0
     - role: vasilisa
       vars:
-        sirin: "http://192.168.11.18:8080/register/stallman-u2604.yml"
+        sirin: "http://192.168.22.18:8080/register/tesla-u2604.yml"
     - activate-unattended-upgrades
     - role: cambia-hostname
       vars:
-        base_hostname: "stallman"
+        base_hostname: "tesla"
           #- chrony-sources
     - ubuntu-desktop-minimal
     - software
@@ -33,7 +33,7 @@
 
   tasks:
     # Usuarios
-    - include_tasks: users/informatica/alumnos/smx1b.yml
+    - include_tasks: users/informatica/alumnos/asix2a.yml
     #- include_tasks: users/informatica/alumnos/smx1c.yml
     #- include_tasks: users/informatica/english.yml
     #  when: ansible_default_ipv4.address == "192.168.12.100"
