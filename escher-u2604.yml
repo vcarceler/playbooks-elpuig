@@ -33,7 +33,7 @@
 
   tasks:
     # Usuarios
-    #- include_tasks: users/informatica/alumnos/smx2a.yml
+    - include_tasks: users/informatica/alumnos/daw2a.yml
     #- include_tasks: users/informatica/alumnos/smx1c.yml
     #- include_tasks: users/informatica/english.yml
     #  when: ansible_default_ipv4.address == "192.168.12.100"

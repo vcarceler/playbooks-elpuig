@@ -1,5 +1,5 @@
 ---
-- hosts: portatils_dev
+- hosts: tesla
   user: root
   gather_facts: false
 
