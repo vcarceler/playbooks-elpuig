@@ -15,7 +15,7 @@
               state: absent
               remove: yes
       with_items:
-              - smx1a
+              - dam1
     # Usuarios
-    - include_tasks: users/informatica/alumnos/smx1a.yml
+    - include_tasks: users/informatica/alumnos/dam1.yml
 
