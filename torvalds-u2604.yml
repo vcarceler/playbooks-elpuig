@@ -14,7 +14,7 @@
     - swappiness-0
     - role: vasilisa
       vars:
-        sirin: "http://192.168.12.18:8080/register/torvalds-u2604.yml"
+        sirin: "http://192.168.10.18:8080/register/torvalds-u2604.yml"
     - activate-unattended-upgrades
     - role: cambia-hostname
       vars:
