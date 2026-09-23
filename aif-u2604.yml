@@ -1,5 +1,5 @@
 ---
-- hosts: ada
+- hosts: aif
   user: root
   strategy: free
 
