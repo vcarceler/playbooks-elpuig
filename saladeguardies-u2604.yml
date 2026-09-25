@@ -14,7 +14,7 @@
     - swappiness-0
     - role: vasilisa
       vars:
-        sirin: "http://192.168.17.18:8080/register/saladeguardies-u2604.yml"
+        sirin: "http://192.168.20.18:8080/register/saladeguardies-u2604.yml"
     - activate-unattended-upgrades
     - role: cambia-hostname
       vars:
