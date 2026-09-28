@@ -1,5 +1,5 @@
 ---
-- hosts: snowden
+- hosts: smx2c
   user: root
 
   tasks:

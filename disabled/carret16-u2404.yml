@@ -1,12 +1,12 @@
 ---
-- hosts: carret10
+- hosts: carret16
   user: root
   strategy: free
 
   vars:
     # He tenido que quitar los grupos sambashare,ubridge
     # Añado tty para que puedan utilizar minicom con un cable
-    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty,vboxusers,wireshark
+    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty,vboxusers
 
   roles:
     - delete-users
@@ -14,15 +14,14 @@
     - swappiness-0
     - role: vasilisa
       vars:
-        sirin: "http://192.168.240.18:8080/register/carret10-u2404.yml"
+        sirin: "http://192.168.240.18:8080/register/carret16-u2404.yml"
     - activate-unattended-upgrades
     - role: cambia-hostname
       vars:
-        base_hostname: "carret10"
+        base_hostname: "carret16"
     - timesyncd-ntp
     - ubuntu-desktop-minimal
     - software
-    - wireguard-tools # q2dg lo ha pedido ;-)
     - gnome-dconf-2404
     - wireshark
     - kvm
@@ -36,10 +35,4 @@
     # Usuarios
     #- include_tasks: users/informatica/alumnos/smx2a.yml
     #- include_tasks: users/informatica/alumnos/asix2a.yml
-    - include_tasks: users/informatica/alumnos/asix2a.yml
-
-    - name: Instala iperf3
-      apt:
-        update_cache: yes
-        pkg:
-          - iperf3
+    - include_tasks: users/informatica/alumnos/asix1.yml

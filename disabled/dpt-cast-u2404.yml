@@ -1,0 +1,38 @@
+---
+- hosts: dpt-cast
+  user: root
+  strategy: free
+
+  vars:
+    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty,vboxusers
+
+  roles:
+    - delete-users
+    - lock-sshd
+    - swappiness-0
+    - role: vasilisa
+      vars:
+        sirin: "http://192.168.17.18:8080/register/dpt-cast-u2404.yml"
+    - activate-unattended-upgrades
+    - role: cambia-hostname
+      vars:
+        base_hostname: "dpt-cast"
+    - timesyncd-ntp
+    - ubuntu-desktop-minimal
+    - software
+    - gnome-dconf-2404
+    - wireshark
+    - kvm
+    - lxd-dir
+    - glpi-agent
+    - convidat
+      #- apagado-1455
+    - apagado-2130
+
+  tasks:
+    #- include_tasks: users/aig/docent.yml
+    #- include_tasks: users/aig/ga.yml
+    # Usuarios
+    #- include: users/informatica/smx2a.yml
+    #- include: users/informatica/smx2b.yml
+    #- include: users/informatica/smx2c.yml
