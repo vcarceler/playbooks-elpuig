@@ -744,9 +744,6 @@ dpt-dibuix
 [smx2c]
 192.168.245.[221:234]
 
-#Portátiles para smx2d
-[smx2d]
-192.168.245.[221:234]
 
 
 # Aulas ESO/BAT con WiFi y cable
@@ -774,20 +771,7 @@ dpt-dibuix
 [portatils_alumnes]
 10.0.0.[201:255]
 10.0.1.[0:255]
-# test
-#10.0.0.6
 
-# Portátiles para los alumnos con Fedora 34
-#
-[portatils-alumnes-f34]
-# alumne-0-138
-10.0.0.138
-10.0.0.[201:255]
-10.0.1.[0:255]
-10.0.2.[0:255]
-10.0.3.[0:119]
-# 10.0.3.120 es el primer portátil del nuevo modelo.
-#10.0.3.[0:255]
 
 [dnf-update]
 192.168.243.36
@@ -798,48 +782,9 @@ dpt-dibuix
 10.0.0.139
 10.0.0.[141:180]
 
-[portatils-tecno]
-192.168.240.220
-192.168.240.224
-192.168.240.226
-192.168.240.216
-192.168.240.227
-192.168.240.242
-192.168.240.229
-192.168.240.215
-192.168.240.219
-192.168.240.232
-192.168.240.11
-192.168.240.235
-192.168.240.239
-192.168.240.210
-192.168.240.145
-192.168.240.209
-192.168.240.212
-192.168.240.211
-192.168.240.214
-192.168.240.230
-192.168.240.222
-192.168.240.214
-192.168.240.209
-192.168.17.104
-192.168.240.218
+[portatils_af2]
 
-# Portátiles HP 250 G4 negro
-# Préstamo a los alumnos de DAM
-[portatiles-prestamo]
-192.168.240.200
-192.168.240.201
-192.168.240.203
-192.168.240.204
-#192.168.19.148
-#192.168.19.170
-#192.168.19.193
-#192.168.19.178
-#192.168.19.124
 
-[secretaria]
-#192.168.240.205
 
 #[biblioteca]
 #192.168.244.[180:189]
@@ -848,65 +793,8 @@ dpt-dibuix
 [consergeria]
 192.168.17.49
 
-# Ordenadores de AIF con J1900
-# necesitan un parámetro en el núcleo
-# para no colgarse
-#[j1900]
-#192.168.14.[100:107]
-#192.168.14.[114:128]
-#192.168.17.32
-#192.168.17.47
-#192.168.240.160
-#192.168.17.53
-
 # Grupo para crear el usuario manteniment
 [manteniment]
-
-# Grupo para crear el usuario admin
-[admin]
-#192.168.240.236 Iván AiF
-#192.168.240.237 Lydia asix
-#192.168.240.145
-#192.168.240.137
-#192.168.240.136
-#192.168.240.154
-#192.168.240.151
-#192.168.240.141
-#192.168.240.129
-#192.168.240.153
-#192.168.240.133
-#192.168.240.128
-#192.168.240.132
-#192.168.240.140
-#192.168.240.130
-#192.168.240.146
-#192.168.240.144
-
-# Clases en las que imparte clases amacias
-[amacias]
-# Chomsky
-192.168.23.100
-# Aula 4 (1E)
-192.168.240.173
-# Aula 4A
-192.168.16.103
-# Aula 202
-192.168.17.52
-
-[portatils_alumnes_u2404]
-# Modelo antiguo (prueba)
-10.0.0.138
-# Dos de Jaime
-10.0.1.219
-10.0.1.250
-#
-# Lenovo 300e 81M9 de alumno (modelo antiguo)
-#
-10.0.0.138
-10.0.0.[201:255]
-10.0.1.[0:255]
-10.0.2.[0:255]
-10.0.3.[0:119]
 
 #
 # 204 Lenovo 300w Yoga Gen 4
@@ -914,17 +802,7 @@ dpt-dibuix
 10.0.3.[120:255]
 10.0.4.[0:67]
 
-# MAC registradas en Kea
-[init_portatils_alumnes_u2404]
-192.168.245.1 vpn=10.0.3.120
-#192.168.243.5 vpn=10.0.0.138
-# Dos de Jaime
-192.168.242.197 vpn=10.0.1.219
-192.168.243.121 vpn=10.0.1.250
 
-# Antiguo [init-portatils-alumnes-f34]
-# Pasa a ser [init_portatils_alumnes]
-# Incluye los 204 Lenovo Yoga 4
 [init_portatils_alumnes]
 192.168.243.5 vpn=10.0.0.138 # Portátil vcarceler para testeo wifi
 192.168.242.132 vpn=10.0.1.130
