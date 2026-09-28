@@ -26,3 +26,6 @@
   include_role:
     name: paquetes-ubuntu-2604
   when: ansible_distribution_version == "26.04"
+  tags:
+    - deb
+    - slow
