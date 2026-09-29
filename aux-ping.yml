@@ -1,5 +1,5 @@
 ---
-- hosts: smx2c
+- hosts: portatils_ad1
   user: root
 
   tasks:
