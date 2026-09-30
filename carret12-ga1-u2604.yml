@@ -1,5 +1,5 @@
 ---
-- hosts: carret10_smx2c
+- hosts: carret12_ga1
   user: root
   strategy: free
 
@@ -14,11 +14,11 @@
     - swappiness-0
     - role: vasilisa
       vars:
-        sirin: "http://192.168.240.18:8080/register/carret10smx2c-u2604.yml"
+        sirin: "http://192.168.240.18:8080/register/carret12-ga1-u2604.yml"
     - activate-unattended-upgrades
     - role: cambia-hostname
       vars:
-        base_hostname: "carret10smx2c"
+        base_hostname: "carret12ga1"
           #- chrony-sources
     - ubuntu-desktop-minimal
     - software
@@ -33,7 +33,7 @@
 
   tasks:
     # Usuarios
-    - include_tasks: users/informatica/alumnos/smx2c.yml
+    - include_tasks: users/aig/alumnos/ga1.yml
     #- include_tasks: users/informatica/alumnos/smx1c.yml
     #- include_tasks: users/informatica/english.yml
     #  when: ansible_default_ipv4.address == "192.168.12.100"
