@@ -37,29 +37,15 @@
     - include_tasks: users/aig/alumnos/sa2.yml
     #- include_tasks: users/informatica/alumnos/smx2a.yml
     #- include_tasks: users/informatica/alumnos/smx1c.yml
-    #- include_tasks: users/informatica/english.yml
-    #  when: ansible_default_ipv4.address == "192.168.12.100"
+    - include_tasks: users/aig/docent.yml
+      when: ansible_default_ipv4.address == "192.168.18.100"
+    - include_tasks: users/aig/krississ.yml
+      when: ansible_default_ipv4.address == "192.168.18.100"
 
-    - name: Borrado de usuarios antiguos
-      user:
-              name: "{{ item }}"
-              state: absent
-              remove: yes
-      with_items:
-              - daw1
-
-    #- name: Borra usuarios
+    #- name: Borrado de usuarios antiguos
     #  user:
-    #    name: "{{ item }}"
-    #    state: absent
-    #    remove: yes
-    #  loop:
-    #    - asix2a
-    #    - uf1
-    #    - uf2
-    #    - uf3
-    #    - uf4
-
-    #- include: users/informatica/smx2a.yml
-    #- include: users/informatica/smx2b.yml
-    #- include: users/informatica/smx2c.yml
+    #          name: "{{ item }}"
+    #          state: absent
+    #          remove: yes
+    #  with_items:
+    #          - daw1

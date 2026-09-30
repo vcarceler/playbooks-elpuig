@@ -33,12 +33,14 @@
 
   tasks:
     # Usuarios
+    - include_tasks: users/aig/alumnos/ga1a.yml
+    - include_tasks: users/aig/alumnos/ga1b.yml
     - include_tasks: users/aig/alumnos/ad2ab.yml
     - include_tasks: users/aig/alumnos/ga2ab.yml
     - include_tasks: users/aig/alumnos/ga2cd.yml
     #- import_tasks: users/aig/alumnos/sa1.yml
-    #- import_tasks: users/informatica/english.yml
-    #  when: ansible_default_ipv4.address == "192.168.12.100"
+    - import_tasks: users/aig/docent.yml
+      when: ansible_default_ipv4.address == "192.168.27.100"
 
     #- name: Borrado de usuarios antiguos
     #  user:
