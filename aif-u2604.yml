@@ -37,16 +37,20 @@
     #- include_tasks: users/informatica/alumnos/smx1c.yml
     #- include_tasks: users/informatica/english.yml
     #  when: ansible_default_ipv4.address == "192.168.12.100"
+    - include_tasks: users/aig/alumnos/ad1.yml
+    - include_tasks: users/aig/alumnos/ad1a.yml
+    - include_tasks: users/aig/alumnos/ad1b.yml
+    - include_tasks: users/aig/alumnos/af1a.yml
+    - include_tasks: users/aig/alumnos/af1b.yml
+    - include_tasks: users/aig/alumnos/af2.yml
+    - include_tasks: users/aig/alumnos/af2ab.yml
     - include_tasks: users/aig/alumnos/ga1a.yml
     - include_tasks: users/aig/alumnos/ga1b.yml
     - include_tasks: users/aig/alumnos/ga1c.yml
     - include_tasks: users/aig/alumnos/ga1d.yml
-    - include_tasks: users/aig/alumnos/af1a.yml
-    - include_tasks: users/aig/alumnos/af1b.yml
-    - include_tasks: users/aig/alumnos/ad1.yml
+    - include_tasks: users/aig/alumnos/ga2.yml
+    - include_tasks: users/aig/alumnos/ga2cd.yml
     - include_tasks: users/aig/docent.yml
-      when: ansible_default_ipv4.address == "192.168.14.100"
-    - include_tasks: users/idiomes/tgrabovs.yml
       when: ansible_default_ipv4.address == "192.168.14.100"
     - include_tasks: users/aig/docent.yml
       when: ansible_default_ipv4.address == "192.168.14.150"
@@ -55,10 +59,10 @@
     - include_tasks: users/idiomes/idiomes.yml
       when: ansible_default_ipv4.address == "192.168.14.150"
 
-    - name: Borrado de usuarios antiguos
-      user:
-              name: "{{ item }}"
-              state: absent
-              remove: yes
-      with_items:
-              - daw1
+    #- name: Borrado de usuarios antiguos
+    #  user:
+    #          name: "{{ item }}"
+    #          state: absent
+    #          remove: yes
+    #  with_items:
+    #          - daw1
