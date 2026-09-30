@@ -34,6 +34,8 @@
 
   tasks:
     # Usuarios
+    - include_tasks: users/aig/alumnos/af2ab.yml
+    - include_tasks: users/aig/alumnos/ga2cd.yml
     #- include_tasks: users/informatica/alumnos/smx1a.yml
     #- include_tasks: users/informatica/alumnos/dam1.yml
     #- include_tasks: users/informatica/english.yml
