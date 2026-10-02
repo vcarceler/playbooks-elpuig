@@ -33,6 +33,8 @@
 
   tasks:
     # Usuarios
+    - include_tasks: users/aig/alumnos/af1a.yml
+    - include_tasks: users/aig/alumnos/af1b.yml
     - include_tasks: users/aig/alumnos/ga1a.yml
     - include_tasks: users/aig/alumnos/ga1b.yml
     - include_tasks: users/aig/alumnos/ad2ab.yml
