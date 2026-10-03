@@ -1,25 +1,21 @@
 flatpaks_instalar:
   - org.ardour.Ardour
-  - cc.arduino.arduinoide
+  - cc.arduino.IDE2
   - org.audacityteam.Audacity
   - org.blender.Blender
   - com.brave.Browser
   - org.chromium.Chromium
-  - com.visualstudio.code-oss
   - org.darktable.Darktable
   - io.dbeaver.DBeaverCommunity
   - org.kde.digikam
   - com.diy_fever.DIYLayoutCreator
   - org.filezillaproject.Filezilla
   - org.freecad.FreeCAD
-  - org.fritzing.Fritzing
   - org.gaphor.Gaphor
-  - org.geogebra.GeoGebra
   - org.gimp.GIMP
   - org.godotengine.Godot
   - org.inkscape.Inkscape
   - net.sourceforge.Klavaro
-  - io.lmms.LMMS
   - org.kde.kbruch
   - org.kde.kcalc
   - org.kde.kdenlive
@@ -31,16 +27,10 @@ flatpaks_instalar:
   - org.librepcb.LibrePCB
   - org.gnome.Maps
   - org.musescore.MuseScore
-  - org.openshot.OpenShot
-  - com.github.alexhuntley.Plots
   - com.obsproject.Studio
   - com.github.jeromerobert.pdfarranger
-  - eu.scarpetta.PDFMixTool
-  - com.github.junrrein.PDFSlicer
   - io.github.Qalculate
   - org.remmina.Remmina
-  - com.rustdesk.RustDesk
-  - edu.mit.Scratch
   - org.gnome.World.Secrets
   - org.gnome.SoundRecorder
   - com.sweethome3d.Sweethome3d
@@ -49,10 +39,22 @@ flatpaks_instalar:
   - ar.com.tuxguitar.TuxGuitar
   - org.kde.umbrello
   - org.videolan.VLC
+  - com.vscodium.codium
   - dev.zed.Zed
 
 flatpaks_retirar:
-    - org.kde.kalzium
-    - org.octave.Octave
-    - org.openscad.OpenSCAD
-    - com.prusa3d.PrusaSlicer
+  - cc.arduino.arduinoide
+  - org.fritzing.Fritzing
+  - org.geogebra.GeoGebra
+  - org.kde.kalzium
+  - io.lmms.LMMS
+  - org.octave.Octave
+  - org.openscad.OpenSCAD
+  - org.openshot.OpenShot
+  - eu.scarpetta.PDFMixTool
+  - com.github.junrrein.PDFSlicer
+  - com.rustdesk.RustDesk
+  - edu.mit.Scratch
+  - com.visualstudio.code-oss
+  - com.github.alexhuntley.Plots
+  - com.prusa3d.PrusaSlicer
