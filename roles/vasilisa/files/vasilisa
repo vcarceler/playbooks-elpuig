@@ -52,6 +52,14 @@ log "There is something to do?"
 modprobe -r kvm_intel
 modprobe -r kvm_amd
 
+#
+# Borra runtimes huérfanos
+#
+if [ -f /usr/bin/flatpak ]
+then
+    log "Borro runtimes de flatpak huérfanos."
+    flatpak uninstall --unused -y
+fi
 
 #
 # Libera espacio borrando los directorios de descargas y las papeleras.
@@ -64,7 +72,7 @@ log "Disk free: $DISK_FREE Threshold: $THRESHOLD"
 
 if [ $DISK_FREE -le $THRESHOLD ]
 then
-	log "Disk free under threshold. Deleting files in $DOWNLOAD_DIR & empty trash for every user."	
+	log "Disk free under threshold. Deleting files in $DOWNLOAD_DIR & empty trash for every user."
 
 	for user in `ls /home`
 	do
@@ -142,8 +150,8 @@ done
 	#	apt remove --yes virtualbox-7.0
 	#	rm /opt/virtualbox-7.0_7.0.12-159484~Ubuntu~jammy_amd64.deb
 	#fi
-	#apt search virtualbox-7.0 2>/dev/null | grep virtualbox-7.0 >/dev/null 
-	#if [ $? == 0 ] 
+	#apt search virtualbox-7.0 2>/dev/null | grep virtualbox-7.0 >/dev/null
+	#if [ $? == 0 ]
 	#then
 		#apt remove --yes virtualbox-7.0
 		#apt update
@@ -213,8 +221,8 @@ then
 	flatpaks=`flatpak list --system --columns=application`
 
 	for x in $apps
-	do 
-		echo $flatpaks | grep $x >/dev/null 2>/dev/null || rm -rfv /var/lib/flatpak/app/$x 
+	do
+		echo $flatpaks | grep $x >/dev/null 2>/dev/null || rm -rfv /var/lib/flatpak/app/$x
 	done
 
 	log "Comprobando actualizaciones flatpak"
@@ -292,5 +300,3 @@ fi
 
 
 log "There is nothing more to do."
-
-
