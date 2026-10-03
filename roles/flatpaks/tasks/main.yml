@@ -2,6 +2,12 @@
 #
 #
 
+- name: Instala flatpak
+  apt:
+    pkg: flatpak
+    state: present
+    update_cache: yes
+
 - name: Instala flatpak de ardour
   community.general.flatpak:
           name: https://dl.flathub.org/repo/appstream/org.ardour.Ardour.flatpakref
