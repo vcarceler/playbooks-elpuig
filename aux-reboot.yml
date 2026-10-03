@@ -1,7 +1,8 @@
 ---
-- hosts: darwin
+- hosts: biblioteca
   user: root
   gather_facts: false
+  strategy: free
 
   roles:
     - reboot
