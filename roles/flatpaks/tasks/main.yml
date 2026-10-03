@@ -9,16 +9,16 @@
     update_cache: yes
 
 - name: Instala aplicaciones flatpak desde flathub
-    flatpak:
-      name: "https://dl.flathub.org/repo/appstream/{{ item }}.flatpakref"
-      state: present
-    loop: "{{ flatpaks_instalar }}"
-    loop_control:
-      label: "{{ item }}"
-    register: resultado
-    until: resultado is succeeded
-    retries: 3
-    delay: 30
+  flatpak:
+    name: "https://dl.flathub.org/repo/appstream/{{ item }}.flatpakref"
+    state: present
+  loop: "{{ flatpaks_instalar }}"
+  loop_control:
+    label: "{{ item }}"
+  register: resultado
+  until: resultado is succeeded
+  retries: 3
+  delay: 30
 
 - name: Desinstala aplicaciones flatpak retiradas
   flatpak:
