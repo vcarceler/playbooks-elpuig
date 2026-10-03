@@ -45,8 +45,7 @@ then
       else
               log "No puedo borrar usuariinstall. Lo intentaré la próxima vez."
       fi
-fi
-if [ -d /home/usuariinstall ]
+elif [ -d /home/usuariinstall ]
 then
     log "Borro el directorio /home/usuariinstall"
     rm -rf /home/usuariinstall
