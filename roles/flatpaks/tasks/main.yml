@@ -2,52 +2,6 @@
 #
 #
 
-# Ubuntu 20.04 necesita una versión nueva de flatpak para instalar chromium
-#
-
-#
-# Añade PPA Flatpak ppa:alexlarsson/flatpak y configura 50unattended-upgrades
-#
-- name: Instala PPA Flatpak ppa:alexlarsson/flatpak
-  apt_repository:
-    repo: ppa:alexlarsson/flatpak
-  when: ansible_distribution_version == "20.04"
-
-- name: Añade LP-PPA-alexlarsson-flatpak:focal a /etc/apt/apt.conf.d/50unattended-upgrades
-  lineinfile:
-    path: /etc/apt/apt.conf.d/50unattended-upgrades
-    insertafter: '^Unattended-Upgrade::Allowed-Origins'
-    line: '        "LP-PPA-alexlarsson-flatpak:focal";'
-  when: ansible_distribution_version == "20.04"
-
-- name: Actualiza (o instala) la última versión de flatpak
-  apt:
-    state: latest
-    update_cache: yes
-    pkg:
-      - flatpak
-  when: ansible_distribution == "Ubuntu"
-
-
-# Instalación de paquetes Flatpak
-
-#- name: Instala flatpaks
-#  block:
-#
-#        - name: Instala flatpak de ardour
-#          flatpak:
-#                  name: https://dl.flathub.org/repo/appstream/org.ardour.Ardour.flatpakref
-#                  state: present
-#
-#        - name: Instala flatpak de geogebra
-#          flatpak:
-#            name: https://dl.flathub.org/repo/appstream/org.geogebra.GeoGebra.flatpakref
-#            state: present
-#
-#  rescue:
-#    - name: Repara el repositorio flatpak
-#      shell: flatpak repair
-
 - name: Instala flatpak de ardour
   community.general.flatpak:
           name: https://dl.flathub.org/repo/appstream/org.ardour.Ardour.flatpakref
@@ -188,10 +142,10 @@
           name: https://dl.flathub.org/repo/appstream/io.lmms.LMMS.flatpakref
           state: present
 
-- name: Instala flatpak de kalzium
-  flatpak:
-          name: https://dl.flathub.org/repo/appstream/org.kde.kalzium.flatpakref
-          state: present
+#- name: Instala flatpak de kalzium
+#  flatpak:
+#          name: https://dl.flathub.org/repo/appstream/org.kde.kalzium.flatpakref
+#          state: present
 
 - name: Instala flatpak de herramientas kde
   flatpak:
@@ -250,15 +204,15 @@
 #          name: https://dl.flathub.org/repo/appstream/org.apache.netbeans.flatpakref
 #          state: present
 
-- name: Instala flatpak de octave
-  flatpak:
-          name: https://dl.flathub.org/repo/appstream/org.octave.Octave.flatpakref
-          state: present
+#- name: Instala flatpak de octave
+#  flatpak:
+#          name: https://dl.flathub.org/repo/appstream/org.octave.Octave.flatpakref
+#          state: present
 
-- name: Instala flatpak de openscad
-  flatpak:
-          name: https://dl.flathub.org/repo/appstream/org.openscad.OpenSCAD.flatpakref
-          state: present
+#- name: Instala flatpak de openscad
+#  flatpak:
+#          name: https://dl.flathub.org/repo/appstream/org.openscad.OpenSCAD.flatpakref
+#          state: present
 
 - name: Instala flatpak de openshot
   flatpak:
@@ -305,10 +259,10 @@
 #          name: https://dl.flathub.org/repo/appstream/com.uploadedlobster.peek.flatpakref
 #          state: absent
 
-- name: Instala flatpak de prusaslicer
-  flatpak:
-          name: https://dl.flathub.org/repo/appstream/com.prusa3d.PrusaSlicer.flatpakref
-          state: present
+#- name: Instala flatpak de prusaslicer
+#  flatpak:
+#          name: https://dl.flathub.org/repo/appstream/com.prusa3d.PrusaSlicer.flatpakref
+#          state: present
 
 - name: Instala flatpak de qalculate
   flatpak:
@@ -369,3 +323,8 @@
   flatpak:
           name: https://dl.flathub.org/repo/appstream/org.videolan.VLC.flatpakref
           state: present
+
+- name: Instala flatpak de zed
+  flatpak:
+    name: https://dl.flathub.org/repo/appstream/dev.zed.Zed.flatpakref
+    state: present
