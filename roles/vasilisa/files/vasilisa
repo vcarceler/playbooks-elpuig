@@ -138,42 +138,6 @@ do
 done
 
 #
-# Si el núcleo es 6.5.0-14-generic quito virtualbox
-#
-#kernel=`uname -a | cut -f3 -d ' '`
-#kernel_chunga=""
-#if [ "$kernel" = "6.5.0-14-generic" ]
-#then
-	#apt remove --yes virtualbox virtualbox-dkms virtualbox-qt
-	#if [ -f /opt/virtualbox-7.0_7.0.12-159484~Ubuntu~jammy_amd64.deb ]
-	#then
-	#	apt remove --yes virtualbox-7.0
-	#	rm /opt/virtualbox-7.0_7.0.12-159484~Ubuntu~jammy_amd64.deb
-	#fi
-	#apt search virtualbox-7.0 2>/dev/null | grep virtualbox-7.0 >/dev/null
-	#if [ $? == 0 ]
-	#then
-		#apt remove --yes virtualbox-7.0
-		#apt update
-		#apt install --yes virtualbox
-	#fi
-#fi
-
-#
-# Retiramos virtualbox-7.0 en Ubuntu 22.04
-#
-#if [ -f /usr/bin/apt ]
-#then
-#	apt list | grep virtualbox-7.0
-#	if [ $? == 0 ]
-#	then
-#		apt remove --yes virtualbox-7.0
-#		apt update
-#		apt install --yes virtualbox
-#	fi
-#fi
-
-#
 # Actualizaciones del sistema
 #
 if [ -f /usr/bin/unattended-upgrade ]
@@ -201,17 +165,6 @@ then
 fi
 
 #
-# Fedora: dnf update
-#
-capacity=`cat /sys/class/power_supply/BAT1/capacity`
-if [ -f /usr/bin/dnf ] && [ $capacity -ge 50 ]
-then
-	log "Actualizando paquetes con dnf update -y"
-	dnf update -y
-	log "Actualizaciones de dnf update -y aplicadas"
-fi
-
-#
 # Actualizaciones flatpak
 #
 if [ -f /usr/bin/flatpak ]
@@ -229,17 +182,6 @@ then
 	flatpak -y update || flatpak repair
 	log "Actualizaciones flatpak aplicadas"
 fi
-
-#
-# Snap refresh. (En algunos equipos hay paquetes rotos - chromium)
-#
-#if [ -f /usr/bin/snap ]
-#then
-#	log "Refresca los snap"
-#        snap refresh
-#        log "Paquetes snap refrescados"
-#
-#fi
 
 #
 # Borramos trabajos de impresión colgados
@@ -284,7 +226,7 @@ if [ -d $NODE_EXPORTER_DIR ]
 then
         log "Preparo métricas para Prometheus"
 
-	sleep 120
+	    sleep 120
 
         FILE='misc.prom'
         CPU_MODEL_NAME=`cat /proc/cpuinfo | grep "model name" | head -n 1 | cut -d':' -f2`
