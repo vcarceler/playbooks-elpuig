@@ -12,6 +12,10 @@
     - wcatalan
   notify:
   - reboot
+  register: resultado
+  until: resultado is succeeded
+  retries: 3
+  delay: 30
 
 # En Ubuntu 24.04 dejamos de necesitar esto
 #- name: Copia el netplan con networkmanager
