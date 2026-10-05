@@ -1,7 +1,7 @@
 
 - name: Test sobre /opt/wireshark
   # Se utiliza /opt/wireshark como flag para indicar que wireshark está
-  # debidamente instalado. 
+  # debidamente instalado.
   stat:
     path: /opt/wireshark
   register: archivo
@@ -30,6 +30,10 @@
     pkg:
     - wireshark
   when: not archivo.stat.exists
+  register: resultado
+  until: resultado is succeeded
+  retries: 3
+  delay: 30
 
 - name: Make debconf changes active
   ansible.builtin.command:
