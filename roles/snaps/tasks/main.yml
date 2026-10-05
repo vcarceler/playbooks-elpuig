@@ -2,84 +2,25 @@
 # Instalación de snaps
 #
 
-
-
-#- name: Elimina snaps deprecated
-#  snap:
-#          state: absent
-#          name:
-                  #- atom
-                  #- blender
-
-- name: Instala snap beekeeper-studio
+- name: Instala snaps
   snap:
-        name: beekeeper-studio
+    name: "{{ item }}"
+  loop:
+    - beekeeper-studio
+    - modelio
+  register: resultado
+  until: resultado is succeeded
+  retries: 3
+  delay: 30
 
-#- name: Instala snap bitwarden
-#  snap:
-#    name: bitwarden
-#  when: ansible_distribution_version == "24.04"
-
-#- name: Instala snap code
-#  snap:
-#        name: code
-#        classic: yes
-
-# - name: Instala snap cura-slicer
-#   snap:
-#         name: cura-slicer
-
-- name: Instala snap go
+- name: Instala snaps classic
   snap:
-    name: go
+    name: "{{ item }}"
     classic: yes
-
-- name: Instala snap intellij-idea-community
-  snap:
-    name: intellij-idea-community
-    classic: yes
-
-- name: Instala snap modelio
-  snap:
-    name: modelio
-
-#- name: Instala snap jupyter
-#  snap:
-#        name: jupyter
-
-#- name: Instala snap kalgebra
-#  snap:
-#        name: kalgebra
-
-#- name: Instala snap kmplot
-#  snap:
-#        name: kmplot
-
-#- name: Instala snap kotlin
-#  snap:
-#        name: kotlin
-#        classic: yes
-
-#- name: Desinstala snap node edge
-#  snap:
-#        name: node
-#        classic: yes
-#        channel: latest/edge
-#        state: absent
-
-#- name: Instala snap node
-#  snap:
-#        name: node
-#        classic: yes
-
-#- name: Instala snap node-red
-#  snap:
-#        name: node-red
-
-#- name: Instala snap pdftk
-#  snap:
-#        name: pdftk
-
-#- name: Instala snap umbrello
-#  snap:
-#        name: umbrello
+  loop:
+    - go
+    - intellij-idea-community
+  register: resultado
+  until: resultado is succeeded
+  retries: 3
+  delay: 30
