@@ -1,7 +1,11 @@
 - name: Instala lxd
   snap:
-        name: lxd
-  ignore_errors: yes
+    name: lxd
+  #ignore_errors: yes
+  register: resultado
+  until: resultado is succeeded
+  retries: 3
+  delay: 30
 
 - name: copy lxd-preseed
   copy:
