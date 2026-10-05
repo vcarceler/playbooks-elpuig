@@ -54,6 +54,10 @@
     - virtualenv
     - vpcs
     - xorriso
+  register: apt_paquetes
+  until: apt_paquetes is succeeded
+  retries: 10
+  delay: 60
 
 #- name: Instala drivers de nvidia en Lenovo ThinkCentre M90t Gen 3
 #  apt:
@@ -63,7 +67,7 @@
 #  when:
 #    # Utilizamos las dos propiedades para asegurarnos de que se trata de los equipos con nvidia
 #    - ansible_product_name == "11TUS02Q00"
-#    - ansible_product_version == "ThinkCentre M90t Gen 3" 
+#    - ansible_product_version == "ThinkCentre M90t Gen 3"
 
 - name: Elimina paquetes innecesarios con apt autoremove
   apt:
