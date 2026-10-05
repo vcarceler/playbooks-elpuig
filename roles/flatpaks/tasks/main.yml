@@ -7,6 +7,10 @@
     pkg: flatpak
     state: present
     update_cache: yes
+  register: resultado
+  until: resultado is succeeded
+  retries: 3
+  delay: 30
 
 - name: Instala aplicaciones flatpak desde flathub
   flatpak:
