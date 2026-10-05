@@ -2,3 +2,7 @@
   apt:
     pkg:
     - wireguard-tools
+  register: resultado
+  until: resultado is succeeded
+  retries: 3
+  delay: 30
