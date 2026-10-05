@@ -102,10 +102,6 @@
 - name: Elimina paquetes innecesarios con apt autoremove
   apt:
     autoremove: yes
-  register: resultado
-  until: resultado is succeeded
-  retries: 3
-  delay: 30
 
 # Desactiva el collector de systemd porque tiene una cardinalidad muy alta
 # https://www.robustperception.io/dropping-metrics-at-scrape-time-with-prometheus
