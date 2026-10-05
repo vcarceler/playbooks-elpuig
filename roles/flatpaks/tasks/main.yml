@@ -29,3 +29,7 @@
     name: "{{ item }}"
     state: absent
   loop: "{{ flatpaks_retirar }}"
+  register: resultado
+  until: resultado is succeeded
+  retries: 3
+  delay: 30
