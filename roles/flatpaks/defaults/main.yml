@@ -1,15 +1,12 @@
 flatpaks_instalar:
-  - org.ardour.Ardour
   - cc.arduino.IDE2
   - org.audacityteam.Audacity
   - org.blender.Blender
   - com.brave.Browser
   - org.chromium.Chromium
-  - org.darktable.Darktable
   - io.dbeaver.DBeaverCommunity
-  - org.kde.digikam
   - com.diy_fever.DIYLayoutCreator
-  - org.filezillaproject.Filezilla
+
   - org.freecad.FreeCAD
   - org.gaphor.Gaphor
   - org.gimp.GIMP
@@ -43,7 +40,11 @@ flatpaks_instalar:
   - dev.zed.Zed
 
 flatpaks_retirar:
+  - org.ardour.Ardour
   - cc.arduino.arduinoide
+  - org.darktable.Darktable
+  - org.kde.digikam
+  - org.filezillaproject.Filezilla
   - org.fritzing.Fritzing
   - org.geogebra.GeoGebra
   - org.kde.kalzium
