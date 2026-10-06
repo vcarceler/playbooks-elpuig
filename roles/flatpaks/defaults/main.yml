@@ -5,8 +5,6 @@ flatpaks_instalar:
   - com.brave.Browser
   - org.chromium.Chromium
   - io.dbeaver.DBeaverCommunity
-  - com.diy_fever.DIYLayoutCreator
-
   - org.freecad.FreeCAD
   - org.gaphor.Gaphor
   - org.gimp.GIMP
@@ -28,7 +26,6 @@ flatpaks_instalar:
   - com.github.jeromerobert.pdfarranger
   - io.github.Qalculate
   - org.remmina.Remmina
-  - org.gnome.World.Secrets
   - org.gnome.SoundRecorder
   - com.sweethome3d.Sweethome3d
   - org.shotcut.Shotcut
@@ -44,6 +41,7 @@ flatpaks_retirar:
   - cc.arduino.arduinoide
   - org.darktable.Darktable
   - org.kde.digikam
+  - com.diy_fever.DIYLayoutCreator
   - org.filezillaproject.Filezilla
   - org.fritzing.Fritzing
   - org.geogebra.GeoGebra
@@ -55,6 +53,7 @@ flatpaks_retirar:
   - eu.scarpetta.PDFMixTool
   - com.github.junrrein.PDFSlicer
   - com.rustdesk.RustDesk
+  - org.gnome.World.Secrets
   - edu.mit.Scratch
   - com.visualstudio.code-oss
   - com.github.alexhuntley.Plots
