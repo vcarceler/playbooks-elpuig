@@ -413,14 +413,6 @@ Lenovo-V510
 [dpt-religio]
 192.168.240.246
 
-[dpt-tecno]
-# Profesor taller de tecno
-#192.168.16.100
-# Tres ordenadores dentro del departamento
-192.168.16.111
-192.168.16.112
-192.168.16.113
-
 [dpt-psico]
 192.168.240.167
 
@@ -442,6 +434,9 @@ Lenovo-V510
 
 [salondeactos]
 192.168.240.163
+
+[tecno]
+192.168.24.[101:114]
 
 [profeescher]
 192.168.28.100
