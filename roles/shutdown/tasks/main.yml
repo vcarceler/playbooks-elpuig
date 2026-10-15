@@ -1,2 +1,2 @@
 - name: Apagado
-  shell: init 0
+  shell: systemctl poweroff -i

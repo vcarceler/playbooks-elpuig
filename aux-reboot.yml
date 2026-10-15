@@ -1,5 +1,5 @@
 ---
-- hosts: biblioteca
+- hosts: tecno
   user: root
   gather_facts: false
   strategy: free
