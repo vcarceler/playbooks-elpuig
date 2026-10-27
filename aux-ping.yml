@@ -1,5 +1,5 @@
 ---
-- hosts: tecno
+- hosts: carret12_ga1
   user: root
 
   tasks:
