@@ -1,12 +1,12 @@
 ---
-- hosts: stallman
+- hosts: carret12_ga1
   user: root
   strategy: free
 
   vars:
     # He tenido que quitar los grupos sambashare,ubridge
     # Añado tty para que puedan utilizar minicom con un cable
-    grupos: adm,cdrom,dialout,kvm,libvirt,lpadmin,lxd,plugdev,tty,vboxusers
+    grupos: adm,cdrom,dialout,kvm,lpadmin,lxd,plugdev,tty
 
   tasks:
     # Usuarios
@@ -24,5 +24,6 @@
               - asix1
               - smx1b
 
-    - include_tasks: users/informatica/alumnos/asix1.yml
-    - include_tasks: users/informatica/alumnos/smx1b.yml
+    #- include_tasks: users/informatica/alumnos/asix1.yml
+    #- include_tasks: users/informatica/alumnos/smx1b.yml
+    - include_tasks: users/aig/alumnos/ga1.yml

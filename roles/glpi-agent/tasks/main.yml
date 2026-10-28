@@ -21,3 +21,7 @@
   lineinfile:
     path: /etc/hosts
     line: 10.0.0.5 glpi.elpuig.xeill.net
+
+- name: Envía el primer inventario a GLPI
+  shell: /snap/bin/glpi-agent
+  when: copy_glpi_agent.changed

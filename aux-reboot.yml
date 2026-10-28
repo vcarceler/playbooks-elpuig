@@ -1,5 +1,5 @@
 ---
-- hosts: aula-108
+- hosts: carret12_ga1
   user: root
   gather_facts: false
   strategy: free
